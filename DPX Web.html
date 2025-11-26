@@ -23,12 +23,16 @@
 
     * {
       box-sizing: border-box;
+      scroll-behavior: smooth;
     }
 
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #10152a 0, #05060a 45%, #03040a 100%);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(0, 168, 255, 0.22), transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(108, 59, 255, 0.16), transparent 55%),
+        #020309;
       color: var(--text-main);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
@@ -43,13 +47,23 @@
       text-decoration: underline;
     }
 
+    section {
+      scroll-margin-top: 80px;
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     /* HEADER / NAV */
 
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: linear-gradient(to bottom, rgba(5, 6, 10, 0.95), rgba(5, 6, 10, 0.85), transparent);
+      background: linear-gradient(to bottom, rgba(5, 6, 10, 0.97), rgba(5, 6, 10, 0.85), transparent);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(31, 41, 51, 0.6);
     }
@@ -107,10 +121,27 @@
     .nav-links a {
       color: var(--text-muted);
       padding: 0.35rem 0;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      transition: width 0.18s ease-out;
     }
 
     .nav-links a:hover {
       color: var(--primary);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
     }
 
     .nav-right {
@@ -134,7 +165,7 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background: radial-gradient(circle at 0 0, #ffffff, #e5f3ff 30%, #c6dbff 55%, #96c6ff 75%, #5daeff 100%);
       color: #020617;
       border-color: rgba(148, 163, 184, 0.2);
       box-shadow: 0 0 18px rgba(0, 168, 255, 0.59);
@@ -162,7 +193,10 @@
     }
 
     .section-alt {
-      background: radial-gradient(circle at top left, rgba(0, 168, 255, 0.06), transparent 50%) #04050b;
+      background:
+        radial-gradient(circle at top left, rgba(0, 168, 255, 0.06), transparent 50%),
+        radial-gradient(circle at top right, rgba(108, 59, 255, 0.1), transparent 50%),
+        #04050b;
     }
 
     .container {
@@ -172,7 +206,7 @@
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 3.2fr) minmax(0, 2.3fr);
+      grid-template-columns: minmax(0, 3.1fr) minmax(0, 2.3fr);
       gap: 2.5rem;
       align-items: center;
       padding-top: 2.8rem;
@@ -224,7 +258,9 @@
     .hero-card {
       border-radius: var(--radius-lg);
       padding: 1.3rem 1.4rem;
-      background: radial-gradient(circle at top, rgba(0, 168, 255, 0.06), transparent 70%) #050814;
+      background:
+        radial-gradient(circle at top, rgba(0, 168, 255, 0.06), transparent 70%),
+        linear-gradient(160deg, #020617, #04091a);
       border: 1px solid rgba(148, 163, 184, 0.27);
       box-shadow:
         0 20px 60px rgba(0, 0, 0, 0.9),
@@ -232,6 +268,8 @@
       font-size: 0.86rem;
       position: relative;
       overflow: hidden;
+      transform: translateY(0);
+      transition: transform 0.18s ease-out, box-shadow 0.18s ease-out;
     }
 
     .hero-card::before {
@@ -246,6 +284,13 @@
     .hero-card-inner {
       position: relative;
       z-index: 1;
+    }
+
+    .hero-card:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.95),
+        0 0 55px rgba(0, 168, 255, 0.45);
     }
 
     .badge {
@@ -284,7 +329,7 @@
       font-size: 0.78rem;
     }
 
-    /* SECTIONS */
+    /* SECTIONS, CARDS, LISTS */
 
     .section-title {
       font-size: 1.6rem;
@@ -318,10 +363,17 @@
       background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(3, 7, 18, 0.96));
       padding: 1.3rem 1.4rem;
       font-size: 0.9rem;
+      transition: transform 0.16s ease-out, box-shadow 0.16s ease-out, border-color 0.16s ease-out;
     }
 
     .card-soft {
       background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.94));
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(148, 163, 184, 0.7);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
     }
 
     .list {
@@ -363,7 +415,24 @@
       color: var(--text-muted);
     }
 
-    /* TOKENOMICS */
+    /* TOKEN DETAILS / TOKENOMICS */
+
+    .token-details {
+      display: grid;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .token-detail-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.55rem 0.8rem;
+      border-radius: 11px;
+      border: 1px solid rgba(31, 41, 55, 0.85);
+      background: radial-gradient(circle at top left, rgba(0, 168, 255, 0.12), rgba(15, 23, 42, 0.95));
+      font-size: 0.86rem;
+    }
 
     .tokenomics-grid {
       display: grid;
@@ -543,17 +612,17 @@
     </div>
   </header>
 
-    <!-- HERO -->
+  <!-- HERO -->
 
   <section class="section">
     <div class="container hero">
       <div>
         <div class="hero-pill" style="margin-bottom: 0.7rem; font-size: 0.78rem;">
-          Testnet prototype live · Staking contract working
+          Testnet prototype live · Token + staking contract functioning
         </div>
         <h1 class="hero-title">
           <span>DashPayX (DPX)</span><br />
-          Fast, low-fee crypto payments with staking.
+          Fast crypto payments with staking rewards.
         </h1>
         <p class="hero-subtitle">
           DPX is a BEP-20 token on BNB Smart Chain, designed for instant, low-fee transfers and simple staking rewards. 
@@ -608,7 +677,7 @@
         </h2>
         <p class="section-subtitle">
           Many tokens exist purely for speculation. DPX is different: it combines real utility 
-          (payments and staking) with a hyper-growth strategy focused on emerging markets.
+          (payments and staking) with a hyper-growth approach focused on emerging markets.
         </p>
         <div class="card card-soft">
           <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 0;">
@@ -725,16 +794,45 @@
     </div>
   </section>
 
-  <!-- TOKENOMICS -->
+  <!-- TOKEN DETAILS + TOKENOMICS -->
 
   <section id="tokenomics" class="section section-alt">
     <div class="container two-col">
       <div>
-        <h2 class="section-title">Tokenomics</h2>
+        <h2 class="section-title">Token Details & Tokenomics</h2>
         <p class="section-subtitle">
           DPX has a fixed supply of 500,000,000 tokens with a clear allocation towards growth, staking, liquidity, 
           team incentives, and long-term sustainability.
         </p>
+
+        <div class="card card-soft">
+          <h3 style="margin-top:0; font-size:0.96rem;">Token Details</h3>
+          <div class="token-details">
+            <div class="token-detail-row">
+              <span>Token Name</span>
+              <span><strong>DashPayX</strong></span>
+            </div>
+            <div class="token-detail-row">
+              <span>Ticker</span>
+              <span><strong>DPX</strong></span>
+            </div>
+            <div class="token-detail-row">
+              <span>Standard</span>
+              <span>BEP-20 on BNB Smart Chain</span>
+            </div>
+            <div class="token-detail-row">
+              <span>Total Supply</span>
+              <span><strong>500,000,000 DPX</strong></span>
+            </div>
+            <div class="token-detail-row">
+              <span>Contract (mainnet)</span>
+              <span style="color:var(--text-muted);">To be announced after security review</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
         <div class="tokenomics-grid">
           <div class="token-row">
             <div>
@@ -779,22 +877,6 @@
             <div>Optional early backers</div>
           </div>
         </div>
-      </div>
-
-      <div class="card">
-        <h3 style="margin-top: 0; font-size: 0.98rem;">Design Principles</h3>
-        <p style="font-size: 0.86rem; color: var(--text-muted);">
-          • <strong>Fairness:</strong> Community and staking receive the majority of the supply, 
-          aligning the protocol with long-term holders and real users.
-        </p>
-        <p style="font-size: 0.86rem; color: var(--text-muted);">
-          • <strong>Stability:</strong> Liquidity and treasury allocations help maintain healthy markets and fund 
-          security reviews, development, and integrations.
-        </p>
-        <p style="font-size: 0.86rem; color: var(--text-muted);">
-          • <strong>Discipline:</strong> Team and advisor tokens are meant to be locked and vested, focusing 
-          on sustainable growth — not quick exits.
-        </p>
       </div>
     </div>
   </section>
