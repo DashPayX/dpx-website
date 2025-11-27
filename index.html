@@ -2,42 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>DashPayX (DPX) • Fast, Secure & Borderless Crypto Payments</title>
+  <title>DashPayX (DPX) – Fast Crypto Payments with Staking</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="DashPayX (DPX) is a fast, low-fee crypto for everyday payments, with simple staking rewards and a next-generation DeFi ecosystem."
-  />
-
-  <!-- Basic social preview -->
-  <meta property="og:title" content="DashPayX (DPX)" />
-  <meta
-    property="og:description"
-    content="Fast, secure and borderless crypto payments with staking rewards."
-  />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://dashpayx.net" />
-  <!-- You can later add an og:image here pointing to your logo -->
-
+  <meta name="description" content="DashPayX (DPX) is a fast, low-fee BEP-20 token with simple staking rewards and a hyper-growth community vision." />
   <style>
     :root {
-      --bg-main: #050711;
-      --bg-elevated: #0b0f1c;
-      --bg-card: #101525;
-      --primary: #4d9fff;
-      --primary-soft: rgba(77, 159, 255, 0.2);
-      --accent: #a867ff;
-      --accent-soft: rgba(168, 103, 255, 0.2);
-      --text-main: #f9fafb;
+      --bg-main: #05060a;
+      --bg-card: #0c0f18;
+      --bg-soft: #0b1020;
+      --primary: #00a8ff;       /* DPX Electric Blue */
+      --primary-soft: rgba(0, 168, 255, 0.2);
+      --accent: #6c3bff;        /* DPX Nebula Purple */
+      --accent-soft: rgba(108, 59, 255, 0.2);
+      --text-main: #e5e7eb;
       --text-muted: #9ca3af;
       --border-subtle: rgba(148, 163, 184, 0.25);
-      --error: #f97373;
-      --success: #22c55e;
-      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.75);
-      --radius-lg: 20px;
-      --radius-xl: 28px;
-      --radius-full: 999px;
-      --max-width: 1120px;
+      --radius-lg: 18px;
+      --radius-xl: 26px;
+      --shadow-soft: 0 22px 70px rgba(0, 0, 0, 0.85);
+      --nav-height: 70px;
     }
 
     * {
@@ -46,17 +29,12 @@
       padding: 0;
     }
 
-    html,
     body {
-      height: 100%;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter",
-        "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827 0, #050711 45%, #020308 100%);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Inter", "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #020617 0%, #020308 40%, #000 100%);
       color: var(--text-main);
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -65,976 +43,1065 @@
       text-decoration: none;
     }
 
-    main {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      padding: 24px 16px 80px;
-    }
-
     .page {
-      width: 100%;
-      max-width: var(--max-width);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      color: var(--text-main);
     }
 
-    /* Top nav */
+    .shell {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.4rem 3rem;
+    }
+
+    /* NAVBAR */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 6, 10, 0.96),
+        rgba(5, 6, 10, 0.85),
+        transparent
+      );
+      border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+    }
+
     .nav {
+      height: var(--nav-height);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 6px 18px;
-      margin-bottom: 20px;
-      border-radius: 999px;
-      background: rgba(10, 12, 24, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      backdrop-filter: blur(18px);
-      position: sticky;
-      top: 12px;
-      z-index: 20;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+      gap: 1rem;
     }
 
     .nav-left {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 0.7rem;
     }
 
     .logo-orb {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 10%, #e5f1ff 0, #4d9fff 35%, #2a3bff 62%, #a867ff 100%);
-      box-shadow: 0 0 28px rgba(77, 159, 255, 0.9),
-        0 0 60px rgba(168, 103, 255, 0.6);
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 20% 20%, #ffffff 0, #c4dcff 16%, transparent 45%),
+        radial-gradient(circle at 65% 75%, #22d3ee 0, #2563eb 35%, #4c1d95 70%);
+      box-shadow:
+        0 0 18px rgba(56, 189, 248, 0.75),
+        0 0 32px rgba(59, 130, 246, 0.85);
     }
 
-    .nav-title-main {
-      font-size: 1.02rem;
+    .logo-text-main {
       font-weight: 700;
-      letter-spacing: 0.04em;
+      letter-spacing: -0.04em;
+      font-size: 1.05rem;
     }
 
-    .nav-sub {
+    .logo-text-sub {
       font-size: 0.72rem;
       color: var(--text-muted);
     }
 
     .nav-links {
       display: flex;
-      align-items: center;
-      gap: 16px;
-      font-size: 0.82rem;
+      gap: 1.6rem;
+      font-size: 0.86rem;
     }
 
     .nav-links a {
-      opacity: 0.88;
-      transition: opacity 0.16s ease, transform 0.16s ease;
+      color: var(--text-muted);
+      position: relative;
+      padding-bottom: 2px;
     }
 
     .nav-links a:hover {
-      opacity: 1;
-      transform: translateY(-1px);
+      color: #e5e7eb;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transition: width 0.16s ease-out;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.78rem;
     }
 
     .badge-network {
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(96, 165, 250, 0.4);
-      background: radial-gradient(circle at top left, rgba(96, 165, 250, 0.25), rgba(15, 23, 42, 0.9));
-      font-size: 0.7rem;
-      color: #bfdbfe;
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 0.4rem;
+      padding: 0.38rem 0.9rem;
+      border-radius: 999px;
+      font-weight: 500;
+      color: #e5f3ff;
+      background: linear-gradient(120deg, #052e16, #082f49);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      box-shadow:
+        0 0 14px rgba(56, 189, 248, 0.6),
+        inset 0 0 12px rgba(15, 23, 42, 0.9);
     }
 
-    .dot-live {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
       background: #22c55e;
       box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
     }
 
-    .btn-primary,
-    .btn-secondary {
-      padding: 8px 16px;
-      border-radius: var(--radius-full);
-      font-size: 0.8rem;
-      font-weight: 600;
+    .nav-tagline {
+      display: none;
+    }
+
+    /* BUTTONS */
+
+    .btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      border: none;
+      justify-content: center;
+      border-radius: 999px;
+      font-weight: 600;
+      border: 1px solid transparent;
       cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease,
-        opacity 0.15s ease;
+      font-size: 0.82rem;
+      padding: 0.5rem 1.2rem;
+      transition: all 0.16s ease-out;
       white-space: nowrap;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #4d9fff, #a867ff);
+      background: linear-gradient(135deg, var(--primary), var(--accent));
       color: #0b1020;
-      box-shadow: 0 16px 35px rgba(37, 99, 235, 0.7);
+      box-shadow:
+        0 14px 40px rgba(0, 168, 255, 0.55),
+        0 0 24px rgba(108, 59, 255, 0.55);
     }
 
     .btn-primary:hover {
+      filter: brightness(1.08);
       transform: translateY(-1px);
-      box-shadow: 0 20px 45px rgba(59, 130, 246, 0.85);
+      box-shadow:
+        0 18px 50px rgba(0, 168, 255, 0.65),
+        0 0 30px rgba(108, 59, 255, 0.65);
     }
 
-    .btn-secondary {
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.4);
+    .btn-outline {
+      background: transparent;
       color: var(--text-main);
+      border-color: rgba(148, 163, 184, 0.55);
     }
 
-    .btn-secondary:hover {
-      background: rgba(30, 64, 175, 0.4);
-      border-color: rgba(129, 140, 248, 0.8);
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: #e5f3ff;
+      box-shadow: 0 0 24px rgba(0, 168, 255, 0.4);
     }
 
-    /* Hero */
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.75);
+      color: var(--text-muted);
+      border-color: rgba(51, 65, 85, 0.85);
+    }
+
+    .btn-ghost:hover {
+      color: #e5e7eb;
+      border-color: rgba(148, 163, 184, 0.7);
+    }
+
+    /* HERO – CENTERED OPTION C */
+
+    main {
+      flex: 1;
+    }
+
+    .hero-wrapper {
+      padding-top: 1.6rem;
+      padding-bottom: 2.5rem;
+    }
 
     .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
-      gap: 26px;
-      margin-top: 32px;
-      margin-bottom: 40px;
-      align-items: center;
-    }
-
-    .hero-left {
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      align-items: center;
+      text-align: center;
+      gap: 2.4rem;
+      padding-top: 2.2rem;
     }
 
-    .pill {
+    .hero-tag-row {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 6px 12px;
+      padding: 0.1rem;
       border-radius: 999px;
-      background: radial-gradient(circle at top left, rgba(96, 165, 250, 0.22), rgba(17, 24, 39, 0.96));
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      font-size: 0.74rem;
-      color: #e5e7eb;
+      background:
+        linear-gradient(90deg, rgba(0, 168, 255, 0.45), transparent 30%),
+        linear-gradient(270deg, rgba(108, 59, 255, 0.5), transparent 30%);
+      box-shadow: 0 0 24px rgba(37, 99, 235, 0.8);
     }
 
-    .pill span.label-new {
-      padding: 3px 8px;
+    .hero-tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.9rem;
       border-radius: 999px;
-      background: rgba(22, 163, 74, 0.16);
-      color: #bbf7d0;
-      font-size: 0.68rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      background: #020617;
+      font-size: 0.76rem;
+      color: #e5f3ff;
+    }
+
+    .hero-tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero-text-block {
+      max-width: 680px;
+      margin: 0 auto;
     }
 
     .hero-title {
-      font-size: clamp(2.1rem, 3vw + 1.3rem, 3.1rem);
-      line-height: 1.05;
-      letter-spacing: 0.02em;
+      font-size: 2.8rem;
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      margin-bottom: 0.7rem;
     }
 
-    .hero-title span.dpx {
-      background: linear-gradient(135deg, #4d9fff, #a855f7);
+    .hero-title span.highlight {
+      background: linear-gradient(120deg, #38bdf8, #a855f7);
       -webkit-background-clip: text;
+      background-clip: text;
       color: transparent;
     }
 
-    .hero-sub {
-      font-size: 0.96rem;
+    .hero-subtitle {
+      font-size: 1.02rem;
       color: var(--text-muted);
-      max-width: 34rem;
+      max-width: 540px;
+      margin: 0.5rem auto 0;
     }
 
-    .hero-ctas {
+    .hero-cta-row {
+      margin-top: 1.5rem;
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
-      margin-bottom: 6px;
+      justify-content: center;
+      gap: 0.9rem;
     }
 
-    .hero-meta {
+    .hero-pill-row {
+      margin-top: 1rem;
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      justify-content: center;
+      gap: 0.6rem;
       font-size: 0.75rem;
       color: var(--text-muted);
     }
 
-    .hero-meta-item {
+    .hero-pill-row span {
+      padding: 0.15rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(75, 85, 99, 0.8);
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    /* CENTERED ORB VISUAL */
+
+    .hero-orb-wrap {
+      margin-top: 1.6rem;
       display: flex;
-      flex-direction: column;
-      gap: 2px;
+      justify-content: center;
     }
 
-    .hero-meta-label {
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 0.68rem;
-      color: rgba(148, 163, 184, 0.9);
-    }
-
-    .hero-meta-value {
-      font-weight: 600;
-      font-size: 0.86rem;
-    }
-
-    .hero-right {
+    .hero-orb {
       position: relative;
-      min-height: 260px;
+      width: 420px;
+      height: 420px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .orb-container {
-      position: relative;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 10%, #e5f1ff 0, #4d9fff 32%, #2a3bff 60%, #a867ff 100%);
-      box-shadow: 0 0 60px rgba(37, 99, 235, 0.8),
-        0 0 120px rgba(168, 85, 247, 0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .orb-ring {
+    .hero-orb-circle {
       position: absolute;
-      width: 110%;
-      height: 110%;
-      border-radius: 50%;
-      border: 1px solid rgba(191, 219, 254, 0.18);
-      box-shadow: 0 0 35px rgba(99, 102, 241, 0.6);
+      inset: 0;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 20% 15%, #ffffff 0, #c4dcff 12%, transparent 45%),
+        radial-gradient(circle at 80% 80%, #38bdf8 0, #2563eb 30%, #4c1d95 65%),
+        radial-gradient(circle at 10% 80%, rgba(59, 130, 246, 0.3), transparent 60%);
+      box-shadow:
+        0 0 60px rgba(59, 130, 246, 0.95),
+        0 0 120px rgba(59, 130, 246, 0.8),
+        0 0 180px rgba(37, 99, 235, 0.85);
+      opacity: 0.96;
     }
 
-    .orb-core {
+    .hero-orb-ring {
+      position: absolute;
+      inset: 10%;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow:
+        0 0 40px rgba(148, 163, 184, 0.35),
+        inset 0 0 26px rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-card {
       position: relative;
-      width: 60%;
-      height: 60%;
-      border-radius: 28px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(191, 219, 254, 0.35);
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
-      display: flex;
-      flex-direction: column;
-      padding: 16px 18px;
-      justify-content: space-between;
+      width: 240px;
+      border-radius: 24px;
+      padding: 1.2rem 1.3rem;
+      background:
+        radial-gradient(circle at top, rgba(0, 168, 255, 0.08), transparent 70%),
+        linear-gradient(160deg, #020617, #04091a);
+      border: 1px solid rgba(148, 163, 184, 0.27);
+      box-shadow:
+        0 24px 70px rgba(0, 0, 0, 0.9),
+        0 0 40px rgba(0, 168, 255, 0.35);
+      font-size: 0.78rem;
+      color: #e5e7eb;
     }
 
-    .orb-core-header {
+    .hero-card-label-row {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-card-label-row span:first-child {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-card-label-row span:last-child {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(22, 163, 74, 0.18);
+      color: #bbf7d0;
+      border: 1px solid rgba(22, 163, 74, 0.7);
+    }
+
+    .hero-card-title {
+      font-weight: 700;
+      margin-bottom: 0.1rem;
+    }
+
+    .hero-card-text {
       font-size: 0.76rem;
       color: var(--text-muted);
+      margin-bottom: 0.7rem;
     }
 
-    .badge-mini {
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: rgba(34, 197, 94, 0.12);
-      color: #bbf7d0;
-      font-size: 0.67rem;
-      text-transform: uppercase;
-      letter-spacing: 0.13em;
-    }
-
-    .orb-core-main {
+    .hero-card-meta {
       display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .orb-core-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-
-    .orb-core-sub {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-    }
-
-    .orb-core-footer {
-      display: flex;
-      align-items: center;
       justify-content: space-between;
-      font-size: 0.72rem;
-      color: var(--text-muted);
+      font-size: 0.68rem;
+      color: #9ca3af;
+      margin-bottom: 0.8rem;
     }
 
-    .pill-small {
+    .hero-card-meta span strong {
+      color: #e5f3ff;
+    }
+
+    .hero-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.68rem;
+      color: #9ca3af;
+    }
+
+    .hero-card-footer span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .hero-card-footer span::before {
+      content: "";
+      width: 6px;
+      height: 6px;
       border-radius: 999px;
-      padding: 2px 8px;
-      border: 1px solid rgba(96, 165, 250, 0.4);
-      background: rgba(15, 23, 42, 0.8);
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
     }
 
-    /* Sections */
-
-    section {
-      margin-bottom: 40px;
+    .hero-card:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 28px 90px rgba(0, 0, 0, 1),
+        0 0 54px rgba(0, 168, 255, 0.6);
     }
 
-    .section-header {
-      margin-bottom: 18px;
+    /* GENERIC SECTION STYLES (ABOUT / TOKENOMICS / STAKING / ROADMAP / FAQ) */
+
+    .section {
+      margin-top: 2.6rem;
     }
 
-    .section-kicker {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: rgba(148, 163, 184, 0.95);
-      margin-bottom: 4px;
+    .section-heading-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.3rem;
     }
 
     .section-title {
-      font-size: 1.35rem;
-      margin-bottom: 6px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
     }
 
-    .section-sub {
-      font-size: 0.9rem;
+    .section-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--primary);
+    }
+
+    .section-subtitle {
+      font-size: 0.86rem;
       color: var(--text-muted);
-      max-width: 40rem;
+      max-width: 420px;
     }
 
-    .grid-2 {
+    .card-grid {
       display: grid;
-      gap: 16px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.3rem;
     }
 
     .card {
       border-radius: var(--radius-lg);
-      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.9), rgba(17, 24, 39, 0.98));
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      padding: 16px 16px 14px;
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.7), #020617 60%);
+      border: 1px solid var(--border-subtle);
+      padding: 1.1rem 1.2rem;
       box-shadow: var(--shadow-soft);
+      font-size: 0.84rem;
     }
 
-    .card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
+    .card h3 {
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
     }
 
-    .card-title {
-      font-size: 0.98rem;
-      font-weight: 600;
+    .muted {
+      color: var(--text-muted);
     }
 
-    .card-pill {
-      padding: 4px 8px;
+    .badge-soft {
+      display: inline-flex;
+      padding: 0.16rem 0.55rem;
       border-radius: 999px;
-      font-size: 0.7rem;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.5);
+      border: 1px solid rgba(55, 65, 81, 0.8);
+      font-size: 0.68rem;
       color: var(--text-muted);
-    }
-
-    .card-body {
-      font-size: 0.86rem;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-
-    .card-meta {
-      font-size: 0.72rem;
-      color: rgba(148, 163, 184, 0.9);
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
+      margin-bottom: 0.4rem;
     }
 
     .tokenomics-grid {
       display: grid;
-      gap: 12px;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: 2fr 1.4fr;
+      gap: 1.5rem;
     }
 
-    .token-box {
-      border-radius: 16px;
-      background: var(--bg-card);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      padding: 10px 12px 9px;
-      font-size: 0.74rem;
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
+    .tokenomics-table {
+      border-radius: var(--radius-lg);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.82rem;
+      overflow: hidden;
     }
 
-    .token-label {
+    .tokenomics-table table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .tokenomics-table th,
+    .tokenomics-table td {
+      padding: 0.6rem 0.9rem;
+      border-bottom: 1px solid rgba(30, 41, 59, 0.9);
+      text-align: left;
+    }
+
+    .tokenomics-table th {
+      font-size: 0.78rem;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: rgba(148, 163, 184, 0.95);
-    }
-
-    .token-value {
-      font-size: 0.88rem;
-      font-weight: 600;
-    }
-
-    .token-note {
-      font-size: 0.7rem;
+      letter-spacing: 0.16em;
       color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.92);
     }
 
-    .roadmap-grid {
+    .tokenomics-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .tokenomics-side {
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.12), #020617 55%);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      padding: 1rem 1.1rem;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.82rem;
+    }
+
+    .tokenomics-side h3 {
+      font-size: 0.92rem;
+      margin-bottom: 0.5rem;
+    }
+
+    ul {
+      margin-left: 1.1rem;
+    }
+
+    li + li {
+      margin-top: 0.18rem;
+    }
+
+    .status-row {
       display: grid;
-      gap: 10px;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
-    .quarter {
-      border-radius: 14px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: var(--bg-card);
-      padding: 10px;
-      font-size: 0.78rem;
-    }
-
-    .quarter-title {
-      font-size: 0.78rem;
-      font-weight: 600;
-      margin-bottom: 4px;
-      color: #e5e7eb;
-    }
-
-    .quarter ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .quarter li {
-      margin-bottom: 3px;
-      color: var(--text-muted);
-    }
-
-    .tag {
-      padding: 2px 8px;
-      border-radius: 999px;
-      font-size: 0.7rem;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      color: rgba(209, 213, 219, 0.95);
-    }
-
-    .stacked {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    /* FAQ */
-
-    .faq-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .faq-item {
-      border-radius: 14px;
-      padding: 10px 12px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.96), rgba(2, 6, 23, 0.98));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-top: 0.9rem;
       font-size: 0.8rem;
     }
 
-    .faq-q {
-      font-weight: 600;
-      margin-bottom: 3px;
-    }
-
-    .faq-a {
-      color: var(--text-muted);
-    }
-
-    /* Footer */
-
-    footer {
-      padding-top: 10px;
-      border-top: 1px solid rgba(148, 163, 184, 0.3);
-      font-size: 0.76rem;
-      color: var(--text-muted);
+    .status-item {
+      border-radius: 999px;
+      padding: 0.42rem 0.8rem;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.9);
       display: flex;
       justify-content: space-between;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 24px;
+      align-items: center;
+      color: var(--text-muted);
     }
 
-    .footer-links {
+    .status-item span {
+      font-weight: 500;
+      color: #e5f3ff;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      font-size: 0.84rem;
+    }
+
+    .faq-item {
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.1rem;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .faq-item h3 {
+      font-size: 0.9rem;
+      margin-bottom: 0.35rem;
+    }
+
+    footer {
+      margin-top: 2.8rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(15, 23, 42, 0.96);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    footer .footer-row {
       display: flex;
-      gap: 12px;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
       flex-wrap: wrap;
     }
 
-    .footer-links a {
-      opacity: 0.8;
+    footer a {
+      color: var(--text-muted);
     }
 
-    .footer-links a:hover {
-      opacity: 1;
+    footer a:hover {
+      color: #e5e7eb;
     }
 
-    /* Responsive */
+    /* RESPONSIVE */
 
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
+    @media (max-width: 960px) {
+      .shell {
+        padding: 0 1rem 2.5rem;
       }
+      .hero-title {
+        font-size: 2.4rem;
+      }
+      .hero-orb {
+        width: 360px;
+        height: 360px;
+      }
+      .card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .tokenomics-grid {
+        grid-template-columns: 1fr;
+      }
+      .status-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
 
-      .hero-right {
-        order: -1;
-        margin-bottom: 6px;
+    @media (max-width: 720px) {
+      header {
+        position: static;
       }
 
       .nav {
-        border-radius: 16px;
-        padding: 6px 12px;
+        height: auto;
+        padding: 0.65rem 0 0.8rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
       }
 
       .nav-links {
         display: none;
       }
 
-      .roadmap-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .nav-right {
+        width: 100%;
+        justify-content: space-between;
       }
 
-      .tokenomics-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      main {
-        padding-inline: 12px;
+      .nav-tagline {
+        display: inline-flex;
+        font-size: 0.7rem;
+        color: var(--text-muted);
       }
 
-      .quarter {
-        padding: 8px;
-      }
-
-      .token-box {
-        padding: 8px;
+      .hero-wrapper {
+        padding-top: 1.2rem;
       }
 
       .hero {
-        margin-top: 22px;
-        gap: 20px;
+        gap: 1.7rem;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-subtitle {
+        font-size: 0.92rem;
+      }
+
+      .hero-orb {
+        width: 300px;
+        height: 300px;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .status-row {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
-
 <body>
-  <main>
-    <div class="page">
-      <!-- NAVBAR -->
-      <header class="nav">
-        <div class="nav-left">
-          <div class="logo-orb"></div>
-          <div>
-            <div class="nav-title-main">DashPayX</div>
-            <div class="nav-sub">DPX • Future-ready crypto payments</div>
+  <div class="page">
+    <header>
+      <div class="shell">
+        <nav class="nav">
+          <div class="nav-left">
+            <div class="logo-orb"></div>
+            <div>
+              <div class="logo-text-main">DashPayX</div>
+              <div class="logo-text-sub">DPX • Future-ready crypto payments</div>
+            </div>
           </div>
-        </div>
-        <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#tokenomics">Tokenomics</a>
-          <a href="#staking">Staking</a>
-          <a href="#roadmap">Roadmap</a>
-          <a href="#faq">FAQ</a>
-          <span class="badge-network">
-            <span class="dot-live"></span>
-            BNB Chain • Testnet
-          </span>
-        </div>
-      </header>
+          <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#tokenomics">Tokenomics</a>
+            <a href="#staking">Staking</a>
+            <a href="#roadmap">Roadmap</a>
+            <a href="#faq">FAQ</a>
+          </div>
+          <div class="nav-right">
+            <span class="nav-tagline">500M fixed supply • Testnet live</span>
+            <div class="badge-network">
+              <span class="badge-dot"></span>
+              <span>BNB Chain • Testnet</span>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
 
-      <!-- HERO -->
-      <section class="hero" id="top">
-        <div class="hero-left">
-          <div class="pill">
-            <span class="label-new">New</span>
-            <span>Next-gen payments & staking protocol</span>
-          </div>
-          <h1 class="hero-title">
-            <span class="dpx">DashPayX (DPX)</span><br />
-            Fast, secure & borderless<br />
-            crypto payments for everyone.
-          </h1>
-          <p class="hero-sub">
-            DashPayX is a decentralized payment token with built-in staking rewards. 
-            Send value in seconds with low fees, and earn passive income by staking DPX — 
-            without complicated DeFi setups.
-          </p>
-          <div class="hero-ctas">
-            <button class="btn-primary" onclick="document.getElementById('staking').scrollIntoView({behavior:'smooth'})">
-              Stake DPX
-              <span>→</span>
-            </button>
-            <button class="btn-secondary" onclick="document.getElementById('tokenomics').scrollIntoView({behavior:'smooth'})">
-              View Tokenomics
-            </button>
-            <button class="btn-secondary" onclick="document.getElementById('whitepaper').scrollIntoView({behavior:'smooth'})">
-              Whitepaper
-            </button>
-          </div>
-          <div class="hero-meta">
-            <div class="hero-meta-item">
-              <div class="hero-meta-label">Status</div>
-              <div class="hero-meta-value">Prototype live on BNB Testnet</div>
-            </div>
-            <div class="hero-meta-item">
-              <div class="hero-meta-label">Total Supply</div>
-              <div class="hero-meta-value">500,000,000 DPX</div>
-            </div>
-            <div class="hero-meta-item">
-              <div class="hero-meta-label">Core Utilities</div>
-              <div class="hero-meta-value">Payments • Staking • Governance*</div>
+    <main>
+      <div class="shell hero-wrapper">
+        <section class="hero" id="top">
+          <div class="hero-tag-row">
+            <div class="hero-tag-pill">
+              <span class="hero-tag-dot"></span>
+              <span>Next-gen payments &amp; staking protocol</span>
             </div>
           </div>
-        </div>
 
-        <div class="hero-right">
-          <div class="orb-container">
-            <div class="orb-ring"></div>
-            <div class="orb-core">
-              <div class="orb-core-header">
-                <span>DPX Staking</span>
-                <span class="badge-mini">Live • Testnet</span>
-              </div>
-              <div class="orb-core-main">
-                <div class="orb-core-title">Stake DPX, earn DPX.</div>
-                <div class="orb-core-sub">
-                  Simple, transparent rewards. No hidden rules, no complex DeFi
-                  strategies.
+          <div class="hero-text-block">
+            <h1 class="hero-title">
+              <span class="highlight">DashPayX (DPX)</span><br />
+              Fast, secure &amp; borderless crypto payments for everyone.
+            </h1>
+            <p class="hero-subtitle">
+              DashPayX is a decentralized payment token with built-in staking rewards.
+              Send value in seconds with low fees, and earn passive income by staking DPX —
+              without complicated DeFi setups.
+            </p>
+            <div class="hero-cta-row">
+              <button class="btn btn-primary">Stake DPX ➜</button>
+              <button class="btn btn-outline">View Tokenomics</button>
+              <button class="btn btn-ghost">Whitepaper</button>
+            </div>
+            <div class="hero-pill-row">
+              <span>500M fixed supply</span>
+              <span>BEP-20 on BNB Smart Chain</span>
+              <span>Low-fee, near-instant transfers</span>
+            </div>
+          </div>
+
+          <div class="hero-orb-wrap">
+            <div class="hero-orb">
+              <div class="hero-orb-circle"></div>
+              <div class="hero-orb-ring"></div>
+              <div class="hero-card">
+                <div class="hero-card-label-row">
+                  <span>DPX STAKING</span>
+                  <span>LIVE • TESTNET</span>
+                </div>
+                <div class="hero-card-title">Stake DPX, earn DPX.</div>
+                <div class="hero-card-text">
+                  Simple, transparent rewards. No hidden rules,
+                  no complex DeFi strategies.
+                </div>
+                <div class="hero-card-meta">
+                  <span><strong>500M</strong> supply</span>
+                  <span><strong>0%</strong> tax</span>
+                </div>
+                <div class="hero-card-footer">
+                  <span>Lock-in free</span>
+                  <span>On-chain &amp; non-custodial</span>
                 </div>
               </div>
-              <div class="orb-core-footer">
-                <span class="pill-small">Lock-in free</span>
-                <span>On-chain & non-custodial</span>
-              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- ABOUT -->
-      <section id="about">
-        <div class="section-header">
-          <div class="section-kicker">Protocol Overview</div>
-          <h2 class="section-title">What is DashPayX?</h2>
-          <p class="section-sub">
-            DashPayX (DPX) is a peer-to-peer digital asset designed for fast payments, 
-            predictable fees, and easy staking. 
-            Inspired by battle-tested networks like Dash and Bitcoin, 
-            DPX focuses on real-world usability — not just speculation.
-          </p>
-        </div>
+        <!-- STATUS STRIP -->
+        <section class="section">
+          <div class="status-row">
+            <div class="status-item">
+              <span>Status</span>
+              <span>Testnet prototype</span>
+            </div>
+            <div class="status-item">
+              <span>Total Supply</span>
+              <span>500,000,000 DPX</span>
+            </div>
+            <div class="status-item">
+              <span>Chain</span>
+              <span>BNB Smart Chain • Testnet</span>
+            </div>
+          </div>
+        </section>
 
-        <div class="grid-2">
-          <div class="card">
-            <div class="card-header">
-              <div class="card-title">Built for everyday payments</div>
-              <span class="card-pill">Low fees • Fast confirmation</span>
-            </div>
-            <div class="card-body">
-              Send DPX across the globe in seconds with low-cost, on-chain transfers. 
-              The goal is simple: make crypto feel as natural as sending a message.
-            </div>
-            <div class="card-meta">
-              <span>BNB Smart Chain compatible</span>
-              <span>Designed for wallets & merchants</span>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-header">
-              <div class="card-title">Staking without complexity</div>
-              <span class="card-pill">On-chain rewards</span>
-            </div>
-            <div class="card-body">
-              Holders can stake DPX directly into a transparent smart contract and earn 
-              additional tokens over time. No centralized custody, no opaque reward math.
-            </div>
-            <div class="card-meta">
-              <span>Stake / withdraw anytime</span>
-              <span>Rewards paid in DPX</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- TOKENOMICS -->
-      <section id="tokenomics">
-        <div class="section-header">
-          <div class="section-kicker">Token Design</div>
-          <h2 class="section-title">DPX Tokenomics</h2>
-          <p class="section-sub">
-            DPX starts with a fixed supply and a clear split between ecosystem growth, 
-            liquidity, and community incentives. 
-            No stealth mints, no hidden emission schedules.
-          </p>
-        </div>
-
-        <div class="tokenomics-grid">
-          <div class="token-box">
-            <div class="token-label">Total Supply</div>
-            <div class="token-value">500,000,000 DPX</div>
-            <div class="token-note">Fixed & pre-minted at genesis.</div>
-          </div>
-          <div class="token-box">
-            <div class="token-label">Network</div>
-            <div class="token-value">BNB Smart Chain</div>
-            <div class="token-note">BEP-20 standard, EVM compatible.</div>
-          </div>
-          <div class="token-box">
-            <div class="token-label">Staking Incentives</div>
-            <div class="token-value">TBD% of supply*</div>
-            <div class="token-note">
-              Exact % finalized before mainnet launch.
-            </div>
-          </div>
-          <div class="token-box">
-            <div class="token-label">Liquidity & Market Making</div>
-            <div class="token-value">TBD%</div>
-            <div class="token-note">
-              Used to seed DEX liquidity & maintain healthy markets.
-            </div>
-          </div>
-          <div class="token-box">
-            <div class="token-label">Ecosystem & Partners</div>
-            <div class="token-value">TBD%</div>
-            <div class="token-note">
-              For integrations, collaborations and real-world pilots.
-            </div>
-          </div>
-          <div class="token-box">
-            <div class="token-label">Team & Long-term Treasury</div>
-            <div class="token-value">TBD%</div>
-            <div class="token-note">
-              Subject to vesting and transparent on-chain tracking.
-            </div>
-          </div>
-        </div>
-
-        <p class="token-note" style="margin-top:8px;">
-          *Note: You are currently viewing the prototype phase. Final token distribution 
-          will be announced with the mainnet launch documentation.
-        </p>
-      </section>
-
-      <!-- STAKING -->
-      <section id="staking">
-        <div class="section-header">
-          <div class="section-kicker">Earn While You Hold</div>
-          <h2 class="section-title">DPX Staking</h2>
-          <p class="section-sub">
-            DPX staking is designed to be simple: stake tokens into a non-custodial smart contract, 
-            earn rewards over time, and withdraw whenever you’re ready.
-          </p>
-        </div>
-
-        <div class="grid-2">
-          <div class="card stacked">
+        <!-- ABOUT -->
+        <section class="section" id="about">
+          <div class="section-heading-row">
             <div>
-              <div class="card-title">How staking works</div>
-              <p class="card-body">
-                1. Connect your wallet on the staking dApp (coming soon).<br />
-                2. Approve the staking contract to use your DPX.<br />
-                3. Stake DPX and start earning rewards instantly.<br />
-                4. Claim rewards or exit at any time.
+              <div class="section-kicker">About</div>
+              <h2 class="section-title">What is DashPayX?</h2>
+            </div>
+            <p class="section-subtitle">
+              DashPayX is a payments-first crypto asset with built-in staking rewards.
+              The goal is simple: make sending and earning crypto as easy as sending
+              a WhatsApp message.
+            </p>
+          </div>
+          <div class="card-grid">
+            <div class="card">
+              <span class="badge-soft">Payments</span>
+              <h3>Fast, low-fee transfers</h3>
+              <p class="muted">
+                DPX is designed for everyday payments — peer-to-peer, merchant, and
+                cross-border use cases — with near-instant finality and low gas costs.
               </p>
             </div>
+            <div class="card">
+              <span class="badge-soft">Staking</span>
+              <h3>Simple staking rewards</h3>
+              <p class="muted">
+                Stake DPX in a straightforward staking contract. No leverage, no
+                complex strategies. Just transparent on-chain rewards.
+              </p>
+            </div>
+            <div class="card">
+              <span class="badge-soft">Vision</span>
+              <h3>Emerging-markets first</h3>
+              <p class="muted">
+                Starting from Pakistan, UAE &amp; GCC, DashPayX aims to become a
+                trusted rails layer for everyday crypto payments and remittances.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- TOKENOMICS -->
+        <section class="section" id="tokenomics">
+          <div class="section-heading-row">
             <div>
-              <span class="tag">Non-custodial</span>
-              <span class="tag">Transparent on-chain logic</span>
-              <span class="tag">No “lock-in” by design*</span>
+              <div class="section-kicker">Tokenomics</div>
+              <h2 class="section-title">DPX supply &amp; allocations</h2>
             </div>
-            <p class="token-note">
-              *Lock periods, if ever introduced, will be optional and clearly explained.
+            <p class="section-subtitle">
+              Fixed supply of 500 million DPX. No buy/sell tax, no hidden mints,
+              and a transparent allocation split for ecosystem, liquidity,
+              community and long-term growth.
             </p>
           </div>
+          <div class="tokenomics-grid">
+            <div class="tokenomics-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Bucket</th>
+                    <th>Allocation</th>
+                    <th>Purpose</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Ecosystem &amp; Rewards</td>
+                    <td>40%</td>
+                    <td>Staking rewards, liquidity incentives, user growth.</td>
+                  </tr>
+                  <tr>
+                    <td>Liquidity &amp; Market-Making</td>
+                    <td>25%</td>
+                    <td>DEX liquidity, CEX listings, stabilizing trading pairs.</td>
+                  </tr>
+                  <tr>
+                    <td>Team &amp; Contributors</td>
+                    <td>15%</td>
+                    <td>Long-term aligned allocation with gradual unlocks.</td>
+                  </tr>
+                  <tr>
+                    <td>Treasury &amp; Partnerships</td>
+                    <td>10%</td>
+                    <td>Strategic deals, integrations, ecosystem partnerships.</td>
+                  </tr>
+                  <tr>
+                    <td>Community &amp; Airdrops</td>
+                    <td>10%</td>
+                    <td>Campaigns, airdrops, ambassadors and early users.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="tokenomics-side">
+              <h3>Design principles</h3>
+              <ul>
+                <li>No stealth taxes or surprise minting.</li>
+                <li>Emphasis on staking rewards instead of hype-only mechanics.</li>
+                <li>Room for future governance token or L2 expansion if needed.</li>
+                <li>Focus on long-term holders and real payment usage.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-          <div class="card stacked">
-            <div class="card-title">Contracts (Testnet)</div>
-            <p class="card-body">
-              These testnet contracts are for experimentation only – not for real capital.
+        <!-- STAKING -->
+        <section class="section" id="staking">
+          <div class="section-heading-row">
+            <div>
+              <div class="section-kicker">Staking</div>
+              <h2 class="section-title">How DPX staking works (testnet)</h2>
+            </div>
+            <p class="section-subtitle">
+              A simple staking contract already lives on BNB Chain Testnet. Stake
+              DPX, track your rewards, and understand the mechanics before any
+              real mainnet deployment.
             </p>
-            <div style="font-size:0.75rem; color:var(--text-muted); display:flex; flex-direction:column; gap:4px;">
-              <div>
-                <strong>DPX Token (Testnet):</strong><br />
-                <code><!-- paste your testnet DPX address here -->0xYourTestnetDPX...</code>
-              </div>
-              <div>
-                <strong>Staking Contract (Testnet):</strong><br />
-                <code><!-- paste your testnet staking address here -->0xYourStakingAddress...</code>
-              </div>
+          </div>
+          <div class="card-grid">
+            <div class="card">
+              <h3>1. Stake DPX</h3>
+              <p class="muted">
+                You deposit your DPX in a non-custodial staking contract.
+                Your tokens stay on-chain; you can exit anytime (no lock-in
+                on testnet).
+              </p>
             </div>
-            <p class="token-note">
-              Mainnet contract addresses will be published only after audits and public announcement.
+            <div class="card">
+              <h3>2. Earn rewards</h3>
+              <p class="muted">
+                Rewards accrue block-by-block based on your share of the staking
+                pool. The model can later be tuned using on-chain parameters.
+              </p>
+            </div>
+            <div class="card">
+              <h3>3. Claim or exit</h3>
+              <p class="muted">
+                You can claim rewards without unstaking, or exit fully by
+                withdrawing principal + rewards. Everything is transparent
+                on explorer.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ROADMAP -->
+        <section class="section" id="roadmap">
+          <div class="section-heading-row">
+            <div>
+              <div class="section-kicker">Roadmap</div>
+              <h2 class="section-title">From prototype to mainnet</h2>
+            </div>
+            <p class="section-subtitle">
+              The short-term focus is learning and iteration: testnet, user
+              feedback, product-market fit. Mainnet and listings come only after
+              the foundations are solid.
             </p>
           </div>
-        </div>
-      </section>
-
-      <!-- ROADMAP -->
-      <section id="roadmap">
-        <div class="section-header">
-          <div class="section-kicker">Execution Plan</div>
-          <h2 class="section-title">DashPayX Roadmap</h2>
-          <p class="section-sub">
-            A realistic, execution-driven roadmap focused on delivering a stable token, 
-            real staking returns, and genuine payment use-cases.
-          </p>
-        </div>
-
-        <div class="roadmap-grid">
-          <div class="quarter">
-            <div class="quarter-title">Q4 2025 • Prototype</div>
-            <ul>
-              <li>✓ DPX token deployed on testnet</li>
-              <li>✓ Staking contract deployed & tested</li>
-              <li>✓ Brand & website live</li>
-              <li>• Whitepaper v0.2</li>
-            </ul>
-          </div>
-          <div class="quarter">
-            <div class="quarter-title">Q1 2026 • Mainnet Prep</div>
-            <ul>
-              <li>Finalize tokenomics & supply split</li>
-              <li>Security review & light audits</li>
-              <li>Deploy DPX & staking on mainnet</li>
-              <li>Integrate with explorers & tracking tools</li>
-            </ul>
-          </div>
-          <div class="quarter">
-            <div class="quarter-title">Q2 2026 • Launch & Liquidity</div>
-            <ul>
-              <li>Public launch & initial DEX liquidity</li>
-              <li>Staking dApp UI launch</li>
-              <li>Listing applications (CoinGecko, etc.)</li>
-              <li>First merchant/payment pilots</li>
-            </ul>
-          </div>
-          <div class="quarter">
-            <div class="quarter-title">Q3–Q4 2026 • Ecosystem</div>
-            <ul>
-              <li>Governance module (DPX voting)</li>
-              <li>Developer & partner integrations</li>
-              <li>Mobile wallet experiences</li>
-              <li>New payment rails & utilities</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- WHITEPAPER / DOCS -->
-      <section id="whitepaper">
-        <div class="section-header">
-          <div class="section-kicker">Documentation</div>
-          <h2 class="section-title">Whitepaper & Resources</h2>
-          <p class="section-sub">
-            A living document explaining DashPayX’s vision, tokenomics, staking model, 
-            and roadmap in detail. The PDF will evolve as the protocol matures.
-          </p>
-        </div>
-        <div class="card" style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px;">
-          <div style="font-size:0.86rem; max-width:26rem; color:var(--text-muted);">
-            Download the latest version of the DashPayX whitepaper. 
-            This is an early-stage, pre-launch document and not financial advice.
-          </div>
-          <button class="btn-primary" onclick="window.open('#', '_blank')">
-            Download Whitepaper (soon)
-          </button>
-        </div>
-      </section>
-
-      <!-- FAQ -->
-      <section id="faq">
-        <div class="section-header">
-          <div class="section-kicker">Questions</div>
-          <h2 class="section-title">Frequently Asked Questions</h2>
-          <p class="section-sub">
-            A quick, honest FAQ for early community members. 
-            No buzzwords, no unrealistic promises.
-          </p>
-        </div>
-
-        <div class="faq-list">
-          <div class="faq-item">
-            <div class="faq-q">Is DashPayX live on mainnet?</div>
-            <div class="faq-a">
-              Not yet. You are currently viewing the <strong>prototype phase</strong> on BNB Smart Chain testnet. 
-              Mainnet deployment will only happen after contracts are reviewed and tokenomics are finalized.
+          <div class="card-grid">
+            <div class="card">
+              <span class="badge-soft">Phase 1</span>
+              <h3>Testnet &amp; architecture</h3>
+              <p class="muted">
+                Finalize token + staking contracts, internal audits, and full
+                documentation. Launch public testnet and basic web app.
+              </p>
+            </div>
+            <div class="card">
+              <span class="badge-soft">Phase 2</span>
+              <h3>Early community rollout</h3>
+              <p class="muted">
+                Build a small but serious DPX community: Pakistan &amp; GCC focus,
+                education around payments &amp; staking, and gathering feedback.
+              </p>
+            </div>
+            <div class="card">
+              <span class="badge-soft">Phase 3</span>
+              <h3>Mainnet &amp; integrations</h3>
+              <p class="muted">
+                Launch on mainnet with proper audits, liquidity, and integrations
+                with wallets, payment tools and on/off-ramps where possible.
+              </p>
             </div>
           </div>
-          <div class="faq-item">
-            <div class="faq-q">Can I invest real money now?</div>
-            <div class="faq-a">
-              At this stage, DashPayX is a technical and economic experiment. 
-              Nothing on this page is an invitation to invest. 
-              Never risk funds you cannot afford to lose.
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q">Will there be governance for DPX holders?</div>
-            <div class="faq-a">
-              Yes. A simple, on-chain governance module is planned so DPX holders can 
-              vote on key protocol changes, treasury decisions, and roadmap priorities.
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q">What makes DashPayX different?</div>
-            <div class="faq-a">
-              DashPayX focuses on three things: <strong>payment usability</strong>, 
-              <strong>transparent staking</strong>, and <strong>risk-aware growth</strong>. 
-              The goal is to build slowly and carefully rather than chasing quick hype.
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- FOOTER -->
-      <footer>
-        <div>
-          © <span id="year"></span> DashPayX • DPX. All rights reserved.
-          <br />
-          <span style="font-size:0.7rem; color:rgba(148,163,184,0.9);">
-            Nothing on this website is financial advice. Crypto assets are highly volatile and risky.
-          </span>
-        </div>
-        <div class="footer-links">
-          <a href="#top">Back to top</a>
-          <a href="#whitepaper">Whitepaper</a>
-          <!-- Later: replace # with real links -->
-          <a href="#" rel="noreferrer">Twitter</a>
-          <a href="#" rel="noreferrer">Telegram</a>
-        </div>
-      </footer>
-    </div>
-  </main>
+        <!-- FAQ -->
+        <section class="section" id="faq">
+          <div class="section-heading-row">
+            <div>
+              <div class="section-kicker">FAQ</div>
+              <h2 class="section-title">Important disclaimers &amp; answers</h2>
+            </div>
+          </div>
+          <div class="faq-grid">
+            <div class="faq-item">
+              <h3>Is DPX live on mainnet?</h3>
+              <p class="muted">
+                Not yet. Right now DashPayX is running as a prototype on BNB
+                Smart Chain Testnet. This is a learning and experimentation
+                phase — not a live product for real money.
+              </p>
+            </div>
+            <div class="faq-item">
+              <h3>Is this financial advice or a guarantee of profit?</h3>
+              <p class="muted">
+                No. Nothing here is financial advice or a promise of returns.
+                Crypto is high-risk. You should never invest money you cannot
+                afford to lose, and you should always do your own research.
+              </p>
+            </div>
+            <div class="faq-item">
+              <h3>Who is behind DashPayX?</h3>
+              <p class="muted">
+                DashPayX is currently a small, focused initiative exploring a
+                serious payments-plus-staking model, starting from South Asia
+                and the Gulf region. The project will evolve transparently as
+                community and contributions grow.
+              </p>
+            </div>
+            <div class="faq-item">
+              <h3>Will there be audits and KYC?</h3>
+              <p class="muted">
+                Before any real mainnet launch or fundraising, formal smart-contract
+                audits and appropriate compliance steps are planned. Testnet is
+                specifically for learning, feedback and proving the design.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+          <div class="footer-row">
+            <div>© <span id="year"></span> DashPayX • DPX</div>
+            <div>
+              <a href="#top">Back to top</a>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </main>
+  </div>
 
   <script>
-    // Set current year automatically
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
