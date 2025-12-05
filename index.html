@@ -2,57 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>DashPayX (DPX) - Staking & Payments on BNB Smart Chain</title>
+  <title>DashPayX (DPX) – Staking & Payments on BNB Smart Chain</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="DashPayX (DPX) is a clean, utility-first token on BNB Smart Chain, focused on staking and payments for Pakistan & GCC. No tax, no presale, fixed supply." />
+  <meta name="description" content="DashPayX (DPX) is a clean, utility-first BEP-20 token on BNB Smart Chain, focused on staking and payments for Pakistan & the GCC. No tax, no presale, fixed supply." />
   <meta name="theme-color" content="#020617" />
 
+  <!-- Open Graph -->
+  <meta property="og:title" content="DashPayX (DPX) – Staking & Payments on BNB Smart Chain" />
+  <meta property="og:description" content="A no-tax, fixed-supply BEP-20 token designed for real-world payments and staking across Pakistan & the GCC." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dashpayx.net" />
+  <meta property="og:image" content="https://dashpayx.net/og-image.png" />
+
+  <!-- Simple inline SVG favicon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg width='128' height='128' viewBox='0 0 128 128' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'%3E%3Cstop offset='0%' stop-color='%235B8DFF'/%3E%3Cstop offset='100%' stop-color='%23A855F7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='64' cy='64' r='60' fill='url(%23g)'/%3E%3Ctext x='50%' y='54%' text-anchor='middle' font-family='system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif' font-size='40' fill='%23F9FAFB' font-weight='700'%3EDP%3C/text%3E%3Ctext x='50%' y='78%' text-anchor='middle' font-family='system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif' font-size='22' fill='%23E5E7EB'%3EX%3C/text%3E%3C/svg%3E" />
+
   <!-- Inter Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      /* Brand gradient tuned darker, more protocol-like */
       --primary-start: #5B8DFF;
       --primary-end: #A855F7;
+      --accent-teal: #14F4FF;
+      --accent-green: #22C55E;
 
-      /* Dark surfaces inspired by protocol sites */
-      --page-bg: #020617;      /* near-black, slightly blue */
-      --bg-dark: #050816;      /* hero & outer bg */
-      --bg-surface: #0B1020;   /* header/strip */
-      --bg-surface-alt: #0F172A; /* cards / inner blocks */
+      --bg-page: #020617;
+      --bg-hero: #020617;
+      --bg-surface: #020617;
+      --bg-card: rgba(15, 23, 42, 0.82);
+
+      --border-soft: rgba(148, 163, 184, 0.3);
+      --shadow-soft: 0 16px 50px rgba(0, 0, 0, 0.85);
 
       --text-main: #E5E7EB;
       --text-muted: #9CA3AF;
-      --border-soft: #1F2937;
-      --card-border: #1E293B;
-      --glow: rgba(148, 163, 184, 0.2);
-      --max-width: 1120px;
+      --text-soft: #6B7280;
+
       --radius-card: 18px;
+      --radius-pill: 999px;
+      --max-width: 1160px;
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: radial-gradient(circle at top, #020617 0%, #020617 40%, #000000 100%);
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.16), transparent 55%),
+        radial-gradient(circle at top right, rgba(168, 85, 247, 0.18), transparent 60%),
+        radial-gradient(circle at bottom, rgba(15, 23, 42, 1), #020617);
       color: var(--text-main);
-      line-height: 1.65;
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
     }
 
     img {
       max-width: 100%;
       display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     .page {
@@ -62,21 +82,21 @@
     }
 
     .container {
-      width: 100%;
       max-width: var(--max-width);
       margin: 0 auto;
       padding: 0 20px;
+      width: 100%;
     }
 
-    /* NAV */
+    /* HEADER / NAV */
 
     header {
       position: sticky;
       top: 0;
-      z-index: 50;
-      backdrop-filter: blur(16px);
-      background: rgba(5, 8, 22, 0.94);
-      border-bottom: 1px solid rgba(15, 23, 42, 0.85);
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.96));
+      border-bottom: 1px solid rgba(31, 41, 55, 0.9);
     }
 
     .nav {
@@ -97,20 +117,43 @@
       height: 32px;
       border-radius: 50%;
       background:
-        radial-gradient(circle at 30% 20%, #FFFFFF 0%, #E2E8F0 14%, #6477FF 40%, #7C3AED 70%, #111827 100%);
+        radial-gradient(circle at 30% 20%, #FFFFFF 0%, #CBD5F5 18%, #6477FF 40%, #A855F7 68%, #020617 100%);
       box-shadow:
-        0 0 26px rgba(124, 58, 237, 0.7),
-        0 0 40px rgba(15, 23, 42, 0.9);
+        0 0 28px rgba(129, 140, 248, 0.9),
+        0 0 40px rgba(0, 0, 0, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-sphere::after {
+      content: "DPX";
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      font-weight: 700;
+      color: rgba(15, 23, 42, 0.9);
+      text-shadow: 0 0 14px rgba(255, 255, 255, 0.9);
+    }
+
+    .nav-title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
     }
 
     .nav-title {
       font-weight: 700;
       font-size: 18px;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.03em;
     }
 
-    .nav-tag {
-      font-size: 12px;
+    .nav-tagline {
+      font-size: 11px;
       color: var(--text-muted);
     }
 
@@ -124,28 +167,2321 @@
     .nav-links a {
       color: var(--text-muted);
       font-weight: 500;
+      position: relative;
+      padding: 4px 0;
     }
 
-    .nav-links a:hover {
-      color: var(--primary-start);
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--primary-start), var(--primary-end));
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
     }
 
     .nav-cta {
       padding: 8px 16px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 0% 0%, #22C55E 0%, #15803D 45%, #14532D 100%);
-      color: #ECFDF5;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, var(--primary-start), var(--primary-end));
+      color: #F9FAFB;
       font-size: 12px;
       font-weight: 600;
-      box-shadow: 0 10px 30px rgba(21, 128, 61, 0.6);
-      border: 1px solid rgba(74, 222, 128, 0.4);
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
+      box-shadow:
+        0 12px 32px rgba(59, 130, 246, 0.7),
+        0 0 0 1px rgba(15, 23, 42, 0.8);
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px) scale(1.02);
+      box-shadow:
+        0 16px 40px rgba(59, 130, 246, 0.85),
+        0 0 0 1px rgba(226, 232, 240, 0.05);
+      opacity: 0.98;
+    }
+
+    .nav-cta span {
+      font-size: 13px;
+    }
+
+    .nav-toggle {
+      display: none;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 10px;
+      padding: 6px 8px;
+      cursor: pointer;
+    }
+
+    .nav-toggle-bar {
+      width: 18px;
+      height: 2px;
+      background: #E5E7EB;
+      border-radius: 999px;
+      margin: 3px 0;
+    }
+
+    .nav-links-mobile {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      padding: 10px 0 16px;
+      font-size: 13px;
+    }
+
+    .nav-links-mobile a {
+      color: var(--text-muted);
+      padding: 4px 0;
+    }
+
+    .nav-links-mobile .nav-cta {
+      width: fit-content;
+      margin-top: 6px;
     }
 
     /* HERO */
 
-    .hero-wrap {
+    .hero {
+      padding: 80px 0 90px;
       background:
-        radial-gradient(circle at top left, rgba(56, 189, 248, 0.12), transparent 55%),
-        radial-gradient(circle at top right, rgba(124, 58, 237, 
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.14), transparent 55%),
+        radial-gradient(circle at top right, rgba(168, 85, 247, 0.25), transparent 60%),
+        linear-gradient(145deg, #020617 0%, #020617 40%, #020617 80%, #020617 100%);
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: #E2E8F0;
+      margin-bottom: 16px;
+    }
+
+    .hero-kicker-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-green);
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero-title {
+      font-size: 34px;
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 10px;
+    }
+
+    .hero-highlight {
+      font-size: 18px;
+      font-weight: 500;
+      color: #E5E7EB;
+      margin-bottom: 14px;
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 22px;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+      font-size: 11px;
+    }
+
+    .hero-pill {
+      padding: 6px 11px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      color: #CBD5F5;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .btn-primary {
+      padding: 10px 20px;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, var(--primary-start), var(--primary-end));
+      color: #F9FAFB;
+      font-size: 13px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 16px 40px rgba(37, 99, 235, 0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) scale(1.02);
+      box-shadow: 0 22px 50px rgba(59, 130, 246, 0.85);
+      opacity: 0.97;
+    }
+
+    .btn-secondary {
+      padding: 9px 18px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.9);
+      color: #E5E7EB;
+      font-size: 12px;
+      font-weight: 500;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(15, 23, 42, 0.98);
+      border-color: rgba(148, 163, 184, 0.95);
+      transform: translateY(-1px);
+    }
+
+    .hero-footnote {
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    /* CONTRACT CARD */
+
+    .contract-card {
+      margin-top: 22px;
+      max-width: 480px;
+      border-radius: var(--radius-card);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.08), rgba(15, 23, 42, 0.98));
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .contract-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .contract-label-row span.tag {
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.8);
+    }
+
+    .contract-address-row {
+      display: flex;
+      align-items: center;
+      margin-top: 2px;
+      gap: 8px;
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 11px;
+      color: #E5E7EB;
+      overflow: hidden;
+    }
+
+    .contract-address {
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .btn-copy {
+      flex-shrink: 0;
+      padding: 4px 9px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      background: rgba(15, 23, 42, 0.95);
+      color: #E5E7EB;
+      font-size: 11px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: background 0.18s ease, transform 0.18s ease;
+    }
+
+    .btn-copy:hover {
+      background: rgba(30, 64, 175, 0.9);
+      transform: translateY(-1px);
+    }
+
+    .copy-status {
+      font-size: 11px;
+      color: var(--accent-green);
+      margin-top: 2px;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .copy-status.visible {
+      opacity: 1;
+    }
+
+    /* HERO GRAPHIC */
+
+    .hero-graphic-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-orbit {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      position: relative;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(248, 250, 252, 0.9) 0%, rgba(191, 219, 254, 0.7) 16%, rgba(99, 102, 241, 0.7) 42%, rgba(168, 85, 247, 0.8) 68%, rgba(15, 23, 42, 1) 100%);
+      box-shadow:
+        0 0 60px rgba(129, 140, 248, 0.95),
+        0 26px 80px rgba(0, 0, 0, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      animation: float 9s ease-in-out infinite;
+      overflow: hidden;
+    }
+
+    .hero-orbit-inner {
+      position: absolute;
+      inset: 16%;
+      border-radius: 50%;
+      border: 1px dashed rgba(15, 23, 42, 0.45);
+      box-shadow: 0 0 32px rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-orbit::after {
+      content: "DPX";
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 32px;
+      letter-spacing: 0.18em;
+      color: rgba(15, 23, 42, 0.9);
+      text-shadow:
+        0 0 20px rgba(255, 255, 255, 0.95),
+        0 0 34px rgba(191, 219, 254, 0.98);
+    }
+
+    .hero-orbit-node {
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #FFFFFF 0%, #93C5FD 40%, #6366F1 80%);
+      box-shadow: 0 0 18px rgba(129, 140, 248, 0.98);
+    }
+
+    .hero-orbit-node:nth-child(1) { top: 16%; left: 20%; }
+    .hero-orbit-node:nth-child(2) { top: 22%; right: 18%; }
+    .hero-orbit-node:nth-child(3) { bottom: 18%; left: 26%; }
+    .hero-orbit-node:nth-child(4) { bottom: 12%; right: 24%; }
+
+    .hero-orbit-ring {
+      position: absolute;
+      inset: -20%;
+      border-radius: 50%;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      box-shadow: 0 0 50px rgba(59, 130, 246, 0.45);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-10px) translateX(4px); }
+    }
+
+    /* GENERIC SECTION STYLES */
+
+    main section {
+      padding: 70px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .section-kicker {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      margin-bottom: 8px;
+      color: #F9FAFB;
+    }
+
+    .section-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+      justify-content: center;
+    }
+
+    .pill {
+      padding: 5px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ABOUT SECTION */
+
+    .section-about {
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), #020617 60%);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 36px;
+      align-items: start;
+    }
+
+    .about-text {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .about-paragraph {
+      margin-bottom: 12px;
+    }
+
+    .about-points {
+      margin-top: 12px;
+    }
+
+    .about-point {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .about-bullet {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #FFFFFF 0%, #C7D2FE 32%, #7C3AED 90%);
+      box-shadow: 0 0 16px rgba(124, 58, 237, 0.85);
+      flex-shrink: 0;
+    }
+
+    .about-pillars {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .about-card {
+      border-radius: var(--radius-card);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.96));
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      box-shadow: var(--shadow-soft);
+      padding: 16px 16px 14px;
+      font-size: 13px;
+    }
+
+    .about-card-title {
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #E5E7EB;
+    }
+
+    .about-card-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 8px;
+      background: radial-gradient(circle at 30% 20%, #ECFEFF 0%, #7DD3FC 40%, #0EA5E9 90%);
+      margin-bottom: 10px;
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.9);
+    }
+
+    /* UTILITY SECTION */
+
+    .section-utility {
+      background: #020617;
+    }
+
+    .utility-grid {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .utility-card {
+      border-radius: var(--radius-card);
+      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.18), rgba(15, 23, 42, 0.96));
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      box-shadow: var(--shadow-soft);
+      padding: 16px 16px 14px;
+      font-size: 13px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+    }
+
+    .utility-card::after {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.1), transparent 65%);
+      opacity: 0;
+      transition: opacity 0.22s ease;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .utility-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 60px rgba(15, 23, 42, 0.95);
+      border-color: rgba(129, 140, 248, 0.9);
+      background: radial-gradient(circle at top right, rgba(129, 140, 248, 0.16), rgba(15, 23, 42, 0.98));
+    }
+
+    .utility-card:hover::after {
+      opacity: 1;
+    }
+
+    .utility-card-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #FFFFFF 0%, #BFDBFE 40%, #6366F1 90%);
+      box-shadow: 0 0 18px rgba(129, 140, 248, 0.95);
+      margin-bottom: 10px;
+    }
+
+    .utility-card-title {
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #E5E7EB;
+    }
+
+    .utility-card-text {
+      color: var(--text-muted);
+    }
+
+    /* TOKENOMICS SECTION */
+
+    .section-tokenomics {
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 1), #020617 70%);
+    }
+
+    .tokenomics-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .tokenomics-highlight {
+      font-size: 15px;
+      font-weight: 600;
+      color: #F9FAFB;
+      margin-bottom: 12px;
+    }
+
+    .tokenomics-list {
+      margin-top: 8px;
+      border-radius: var(--radius-card);
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      box-shadow: var(--shadow-soft);
+      padding: 12px 14px;
+      font-size: 13px;
+    }
+
+    .tokenomics-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px dashed rgba(55, 65, 81, 0.9);
+      color: var(--text-muted);
+    }
+
+    .tokenomics-row:last-child {
+      border-bottom: none;
+    }
+
+    .tokenomics-row span.value {
+      font-weight: 600;
+      color: #E5E7EB;
+    }
+
+    .tokenomics-notes {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    .tokenomics-donut {
+      position: relative;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      margin: 0 auto 12px;
+      background:
+        conic-gradient(
+          #60A5FA 0 180deg,
+          #A855F7 180deg 252deg,
+          #10B981 252deg 288deg,
+          #F97316 288deg 324deg,
+          #FACC15 324deg 342deg,
+          #F472B6 342deg 360deg
+        );
+      box-shadow:
+        0 0 40px rgba(37, 99, 235, 0.8),
+        0 26px 70px rgba(0, 0, 0, 0.95);
+    }
+
+    .tokenomics-donut::before {
+      content: "";
+      position: absolute;
+      inset: 28px;
+      border-radius: 50%;
+      background: radial-gradient(circle at top, #020617, #020617 70%, #020617 100%);
+      box-shadow: inset 0 0 20px rgba(15, 23, 42, 0.9);
+    }
+
+    .tokenomics-donut-label {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .tokenomics-donut-label strong {
+      display: block;
+      font-size: 14px;
+      color: #F9FAFB;
+      margin-bottom: 3px;
+    }
+
+    .tokenomics-legend {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .tokenomics-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 4px;
+    }
+
+    .legend-swatch.liq { background: #60A5FA; }
+    .legend-swatch.stake { background: #A855F7; }
+    .legend-swatch.eco { background: #10B981; }
+    .legend-swatch.treas { background: #F97316; }
+    .legend-swatch.cex { background: #FACC15; }
+    .legend-swatch.team { background: #F472B6; }
+
+    /* ROADMAP */
+
+    .section-roadmap {
+      background: #020617;
+    }
+
+    .roadmap-layout {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 30px;
+    }
+
+    .roadmap-timeline {
+      border-left: 1px solid rgba(31, 41, 55, 0.95);
+      padding-left: 18px;
+    }
+
+    .roadmap-item {
+      position: relative;
+      padding-left: 10px;
+      margin-bottom: 18px;
+    }
+
+    .roadmap-item::before {
+      content: "";
+      position: absolute;
+      left: -23px;
+      top: 5px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 20%, #FFFFFF 0%, #BFDBFE 30%, #6366F1 75%, #020617 100%);
+      box-shadow: 0 0 20px rgba(129, 140, 248, 0.9);
+      border: 1px solid rgba(191, 219, 254, 0.6);
+    }
+
+    .roadmap-phase {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .roadmap-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .roadmap-text {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .roadmap-card {
+      border-radius: var(--radius-card);
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      box-shadow: var(--shadow-soft);
+      padding: 16px 16px 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* SECURITY */
+
+    .section-security {
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 1), #020617 70%);
+    }
+
+    .security-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .security-card {
+      border-radius: var(--radius-card);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.2), rgba(15, 23, 42, 0.98));
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      box-shadow: var(--shadow-soft);
+      padding: 14px 14px 12px;
+      font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .security-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.95);
+      border-color: rgba(129, 140, 248, 0.95);
+    }
+
+    .security-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #ECFEFF 0%, #22C55E 60%, #14532D 100%);
+      box-shadow: 0 0 18px rgba(34, 197, 94, 0.9);
+    }
+
+    .security-title {
+      font-weight: 600;
+      color: #E5E7EB;
+    }
+
+    .security-list {
+      list-style: none;
+      padding-left: 0;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .security-list li {
+      margin-bottom: 3px;
+    }
+
+    .security-link {
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--accent-teal);
+    }
+
+    .security-never {
+      margin-top: 18px;
+      border-radius: var(--radius-card);
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      box-shadow: var(--shadow-soft);
+      padding: 14px 14px 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .security-never-title {
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #F9FAFB;
+    }
+
+    .security-never ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .security-never li::before {
+      content: "• ";
+      color: var(--accent-teal);
+    }
+
+    /* HOW TO BUY */
+
+    .section-buy {
+      background: #020617;
+    }
+
+    .buy-grid {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .buy-card {
+      border-radius: var(--radius-card);
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      box-shadow: var(--shadow-soft);
+      padding: 16px 16px 14px;
+      font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .buy-step {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .buy-title {
+      font-weight: 600;
+      color: #E5E7EB;
+    }
+
+    .buy-note {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    .buy-note strong {
+      color: #F97316;
+    }
+
+    /* TEAM / GOVERNANCE */
+
+    .section-team {
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 1), #020617 70%);
+    }
+
+    .team-grid {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .team-card {
+      border-radius: var(--radius-card);
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      box-shadow: var(--shadow-soft);
+      padding: 14px 14px 12px;
+      font-size: 13px;
+    }
+
+    .team-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #E5E7EB 0%, #64748B 40%, #020617 100%);
+      margin-bottom: 8px;
+    }
+
+    .team-name {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .team-role {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .team-text {
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    /* FAQ */
+
+    .section-faq {
+      background: #020617;
+    }
+
+    .faq-grid {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .faq-item {
+      border-radius: var(--radius-card);
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .faq-header {
+      padding: 11px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .faq-question {
+      font-weight: 500;
+    }
+
+    .faq-toggle {
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-left: 10px;
+    }
+
+    .faq-body {
+      padding: 0 14px 0;
+      max-height: 0;
+      overflow: hidden;
+      font-size: 12px;
+      color: var(--text-muted);
+      transition: max-height 0.25s ease;
+    }
+
+    .faq-item.open .faq-body {
+      padding-bottom: 10px;
+    }
+
+    .faq-item.open .faq-body-inner {
+      padding-top: 4px;
+    }
+
+    .faq-body-inner {
+      padding-top: 0;
+    }
+
+    .faq-item.open .faq-body {
+      max-height: 200px;
+    }
+
+    /* COMMUNITY */
+
+    .section-community {
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 1), #020617 70%);
+    }
+
+    .community-layout {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    .community-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .btn-social {
+      padding: 9px 16px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      background: rgba(15, 23, 42, 0.95);
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn-social:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.95);
+      border-color: rgba(129, 140, 248, 0.95);
+    }
+
+    .btn-social.twitter {
+      border-color: rgba(56, 189, 248, 0.7);
+    }
+
+    .btn-social.telegram {
+      border-color: rgba(59, 130, 246, 0.8);
+    }
+
+    .btn-social.discord {
+      border-color: rgba(129, 140, 248, 0.8);
+    }
+
+    .newsletter-card {
+      border-radius: var(--radius-card);
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      box-shadow: var(--shadow-soft);
+      padding: 14px 14px 12px;
+      font-size: 13px;
+    }
+
+    .newsletter-input-row {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 8px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text-main);
+      font-size: 13px;
+      outline: none;
+    }
+
+    .newsletter-input::placeholder {
+      color: var(--text-soft);
+    }
+
+    .newsletter-btn {
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      border: none;
+      font-size: 12px;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--primary-start), var(--primary-end));
+      color: #F9FAFB;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      box-shadow: 0 12px 30px rgba(59, 130, 246, 0.7);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .newsletter-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(59, 130, 246, 0.9);
+    }
+
+    .newsletter-status {
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--accent-green);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .newsletter-status.visible {
+      opacity: 1;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #020617;
+      border-top: 1px solid rgba(31, 41, 55, 0.95);
+      padding: 24px 0 30px;
+      margin-top: 10px;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 12px;
+    }
+
+    .footer-left {
+      max-width: 420px;
+    }
+
+    .footer-mission {
+      margin-top: 6px;
+      color: var(--text-soft);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-start);
+    }
+
+    .footer-disclaimer {
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    /* SCROLL REVEAL */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* SCROLL TO TOP */
+
+    .scroll-top {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      background: radial-gradient(circle at top, rgba(37, 99, 235, 0.5), rgba(15, 23, 42, 0.98));
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 90;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .scroll-top:hover {
+      transform: translateY(-2px);
+    }
+
+    .scroll-top span {
+      font-size: 16px;
+      color: #E5E7EB;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 1024px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      }
+
+      .security-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .buy-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .team-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 32px;
+      }
+
+      .hero {
+        padding: 64px 0 68px;
+      }
+
+      main section {
+        padding: 60px 0;
+      }
+
+      .about-grid,
+      .utility-grid,
+      .tokenomics-layout,
+      .roadmap-layout,
+      .security-grid,
+      .buy-grid,
+      .team-grid,
+      .faq-grid,
+      .community-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .utility-grid {
+        gap: 14px;
+      }
+
+      .tokenomics-donut {
+        margin-bottom: 16px;
+      }
+
+      .section-header {
+        margin-bottom: 28px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 16px;
+      }
+
+      .hero-title {
+        font-size: 26px;
+      }
+
+      .hero-highlight {
+        font-size: 15px;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .contract-card {
+        max-width: 100%;
+      }
+
+      .tokenomics-donut {
+        width: 210px;
+        height: 210px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<div class="page">
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <div class="nav-left">
+          <div class="logo-sphere"></div>
+          <div class="nav-title-block">
+            <div class="nav-title">DashPayX (DPX)</div>
+            <div class="nav-tagline">Staking & Payments on BNB Smart Chain</div>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#utility">Utility</a>
+          <a href="#tokenomics">Tokenomics</a>
+          <a href="#roadmap">Roadmap</a>
+          <a href="#security">Security</a>
+          <a href="#buy">How to Buy</a>
+          <a href="#faq">FAQ</a>
+          <a href="#community">Community</a>
+          <button class="nav-cta" onclick="scrollToSection('buy')">
+            <span>Buy DPX</span>
+          </button>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+          <div class="nav-toggle-bar"></div>
+          <div class="nav-toggle-bar"></div>
+        </button>
+      </nav>
+      <div class="nav-links-mobile" id="navMobile">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#utility">Utility</a>
+        <a href="#tokenomics">Tokenomics</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#security">Security</a>
+        <a href="#buy">How to Buy</a>
+        <a href="#faq">FAQ</a>
+        <a href="#community">Community</a>
+        <button class="nav-cta" onclick="scrollToSection('buy')">
+          <span>Buy DPX</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-inner reveal">
+          <div>
+            <div class="hero-kicker">
+              <span class="hero-kicker-dot"></span>
+              Utility-first BEP-20 on BNB Smart Chain
+            </div>
+            <h1 class="hero-title">DashPayX (DPX): Clean Staking & Payments on BNB Smart Chain</h1>
+            <p class="hero-highlight">
+              A no-tax, fixed-supply BEP-20 token designed for real-world payments and staking across Pakistan &amp; the GCC.
+            </p>
+            <p class="hero-sub">
+              DashPayX is built for users and builders who want transparent tokenomics, predictable staking, and everyday payment rails —
+              without meme noise or casino-style token mechanics.
+            </p>
+
+            <div class="hero-pills">
+              <span class="hero-pill">0% buy / 0% sell tax</span>
+              <span class="hero-pill">Fixed supply – 1,000,000,000 DPX</span>
+              <span class="hero-pill">No presale – LP-first launch</span>
+              <span class="hero-pill">Focused on Pakistan &amp; GCC</span>
+            </div>
+
+            <div class="hero-actions">
+              <button class="btn-primary" onclick="openLink('[DPX_PANCAKESWAP_LINK]')">
+                <span>Buy on PancakeSwap</span>
+              </button>
+              <button class="btn-secondary" onclick="openLink('[DPX_BSCSCAN_LINK]')">
+                <span>View on BscScan</span>
+              </button>
+            </div>
+
+            <p class="hero-footnote">
+              Testnet contracts are already live and battle-tested. Mainnet deployment is planned with a clear focus on security and transparency.
+            </p>
+
+            <div class="contract-card">
+              <div class="contract-label-row">
+                <span>Official DPX Contract – BNB Smart Chain</span>
+                <span class="tag">BEP-20 • BSC</span>
+              </div>
+              <div class="contract-address-row">
+                <span class="contract-address" id="contractAddressText">
+                  0xF8309ade4379ecCf4a092DB88b159654b085B811
+                </span>
+                <button class="btn-copy" id="copyContractBtn">
+                  <span>Copy</span>
+                </button>
+              </div>
+              <div class="copy-status" id="copyStatus">Copied!</div>
+            </div>
+          </div>
+
+          <div class="hero-graphic-wrap">
+            <div class="hero-orbit">
+              <div class="hero-orbit-ring"></div>
+              <div class="hero-orbit-inner"></div>
+              <div class="hero-orbit-node"></div>
+              <div class="hero-orbit-node"></div>
+              <div class="hero-orbit-node"></div>
+              <div class="hero-orbit-node"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section-about">
+      <div class="container reveal">
+        <div class="section-header">
+          <div class="section-kicker">About DashPayX</div>
+          <h2 class="section-title">A protocol for simple, clean value transfer.</h2>
+          <p class="section-sub">
+            DashPayX exists because most tokens are built for speculation first and utility later. DPX reverses that priority,
+            focusing on staking and payments for real people and businesses across Pakistan &amp; the Gulf.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <p class="about-paragraph">
+              The crypto space is full of complex tokenomics, hidden taxes, and projects that never move beyond hype. For users in
+              Pakistan and the GCC, this makes everyday crypto usage confusing and risky.
+            </p>
+            <p class="about-paragraph">
+              DashPayX is a simple, utility-first BEP-20 token: no tax, no reflections, no stealth mints. Just a fixed supply, a
+              staking layer, and a payment-focused roadmap that can be understood without decoding an overly clever smart contract.
+            </p>
+            <p class="about-paragraph">
+              By building on BNB Smart Chain, DPX leverages low fees, high throughput, and broad infrastructure support — making it
+              practical for everyday transfers, micro-payments, and future merchant integrations.
+            </p>
+
+            <div class="about-points">
+              <div class="about-point">
+                <div class="about-bullet"></div>
+                <div>Designed for individuals, freelancers, and merchants who need a predictable medium of exchange.</div>
+              </div>
+              <div class="about-point">
+                <div class="about-bullet"></div>
+                <div>Focus markets: Pakistan and the wider Gulf region (UAE, Qatar, Saudi, and beyond).</div>
+              </div>
+              <div class="about-point">
+                <div class="about-bullet"></div>
+                <div>Built with a “protocol first, marketing second” mindset — the code and utility must stand on their own.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-pillars">
+            <article class="about-card">
+              <div class="about-card-icon"></div>
+              <h3 class="about-card-title">Utility-First Design</h3>
+              <p>
+                DPX is engineered around two core utilities from day one: staking and payments. No meme narrative, no unrealistic
+                promises — just on-chain mechanisms that can be verified and used.
+              </p>
+            </article>
+            <article class="about-card">
+              <div class="about-card-icon"></div>
+              <h3 class="about-card-title">Transparent Tokenomics</h3>
+              <p>
+                A fixed, 1B DPX supply with clearly defined allocations and no hidden team bags. No stealth mints, no tax routes,
+                and no obfuscated upgrade logic.
+              </p>
+            </article>
+            <article class="about-card">
+              <div class="about-card-icon"></div>
+              <h3 class="about-card-title">Built for Pakistan &amp; GCC</h3>
+              <p>
+                DPX is intentionally focused on markets where remittances, freelance work, and cross-border payments are everyday
+                realities — not abstractions.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UTILITY -->
+    <section id="utility" class="section-utility">
+      <div class="container reveal">
+        <div class="section-header">
+          <div class="section-kicker">Utility</div>
+          <h2 class="section-title">Real utility, not just hype.</h2>
+          <p class="section-sub">
+            DashPayX is designed as a long-term infrastructure token — a simple primitive for staking, everyday payments,
+            and future tools that make crypto usable in daily life.
+          </p>
+        </div>
+
+        <div class="utility-grid">
+          <article class="utility-card">
+            <div class="utility-card-icon"></div>
+            <h3 class="utility-card-title">Staking Rewards</h3>
+            <p class="utility-card-text">
+              Stake DPX into the staking pool to earn on-chain rewards. The focus is on clean, predictable mechanics —
+              no hidden reward routes, no unrealistic APY marketing, and no ponzi-style emissions.
+            </p>
+          </article>
+
+          <article class="utility-card">
+            <div class="utility-card-icon"></div>
+            <h3 class="utility-card-title">Payments &amp; Transfers</h3>
+            <p class="utility-card-text">
+              DPX is designed for real users: sending value between friends, paying freelancers, and settling invoices —
+              especially across Pakistan &amp; the Gulf, where traditional rails are often slow or expensive.
+            </p>
+          </article>
+
+          <article class="utility-card">
+            <div class="utility-card-icon"></div>
+            <h3 class="utility-card-title">Ecosystem Backbone</h3>
+            <p class="utility-card-text">
+              Over time, DPX aims to support merchant tools, payment gateway integrations, invoicing flows, and potentially
+              card-based spending — with DPX as the underlying asset that ties everything together.
+            </p>
+          </article>
+        </div>
+
+        <div class="pill-row">
+          <span class="pill">BEP-20 • BNB Smart Chain</span>
+          <span class="pill">Staking contracts on-chain</span>
+          <span class="pill">Payments &amp; remittance focus</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOKENOMICS -->
+    <section id="tokenomics" class="section-tokenomics">
+      <div class="container reveal">
+        <div class="section-header">
+          <div class="section-kicker">Tokenomics</div>
+          <h2 class="section-title">Transparent, fixed-supply tokenomics.</h2>
+          <p class="section-sub">
+            DPX has a hard-capped, 1,000,000,000 token supply. No stealth minting, no reflections, and no tax routing. The
+            allocation is biased toward actual usage: liquidity, staking, and ecosystem growth.
+          </p>
+        </div>
+
+        <div class="tokenomics-layout">
+          <div>
+            <div class="tokenomics-highlight">
+              1,000,000,000 DPX — fixed supply, no mint.
+            </div>
+            <p style="font-size:13px; color:var(--text-muted);">
+              The current tokenomics plan is structured around operational reality: liquidity must be deep enough for trading,
+              staking must be sustainable, and there must be room for ecosystem growth without creating hidden incentives.
+            </p>
+
+            <div class="tokenomics-list">
+              <div class="tokenomics-row">
+                <span>DEX Liquidity &amp; Market Making</span>
+                <span class="value">50% &nbsp;•&nbsp; 500M DPX</span>
+              </div>
+              <div class="tokenomics-row">
+                <span>Staking &amp; Rewards Pool</span>
+                <span class="value">20% &nbsp;•&nbsp; 200M DPX</span>
+              </div>
+              <div class="tokenomics-row">
+                <span>Ecosystem &amp; Partnerships</span>
+                <span class="value">10% &nbsp;•&nbsp; 100M DPX</span>
+              </div>
+              <div class="tokenomics-row">
+                <span>Treasury &amp; Operations</span>
+                <span class="value">10% &nbsp;•&nbsp; 100M DPX</span>
+              </div>
+              <div class="tokenomics-row">
+                <span>CEX &amp; Strategic Liquidity</span>
+                <span class="value">5% &nbsp;•&nbsp; 50M DPX</span>
+              </div>
+              <div class="tokenomics-row">
+                <span>Core Contributors (Vested)</span>
+                <span class="value">5% &nbsp;•&nbsp; 50M DPX</span>
+              </div>
+            </div>
+
+            <div class="tokenomics-notes">
+              • Tax: <strong>0% buy / 0% sell</strong> — no transfer tax.<br />
+              • Presale: <strong>None</strong> — LP-first, transparent launch.<br />
+              • Team allocation: allocated with <strong>vesting and time-locking</strong> to avoid surprise unlocks.<br />
+              • No hidden mints, no blacklisted wallets, no stealth supply changes.
+            </div>
+          </div>
+
+          <div>
+            <div class="tokenomics-donut">
+              <div class="tokenomics-donut-label">
+                <strong>DPX Supply</strong>
+                <span>1,000,000,000</span>
+                <span>Fixed • No Mint</span>
+              </div>
+            </div>
+            <div class="tokenomics-legend">
+              <div class="tokenomics-legend-item">
+                <span class="legend-swatch liq"></span>
+                <span>50% Liquidity &amp; MM</span>
+              </div>
+              <div class="tokenomics-legend-item">
+                <span class="legend-swatch stake"></span>
+                <span>20% Staking Pool</span>
+              </div>
+              <div class="tokenomics-legend-item">
+                <span class="legend-swatch eco"></span>
+                <span>10% Ecosystem</span>
+              </div>
+              <div class="tokenomics-legend-item">
+                <span class="legend-swatch treas"></span>
+                <span>10% Treasury</span>
+              </div>
+              <div class="tokenomics-legend-item">
+                <span class="legend-swatch cex"></span>
+                <span>5% CEX / Strategic</span>
+              </div>
+              <div class="tokenomics-legend-item">
+                <span class="legend-swatch team"></span>
+                <span>5% Contributors (Vested)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section id="roadmap" class="section-roadmap">
+      <div class="container reveal">
+        <div class="section-header">
+          <div class="section-kicker">Roadmap</div>
+          <h2 class="section-title">From launch to real adoption.</h2>
+          <p class="section-sub">
+            DashPayX progresses in measured phases: build, launch, prove usage, then scale. The goal is a useful payment and staking
+            layer, not a one-week speculative event.
+          </p>
+        </div>
+
+        <div class="roadmap-layout">
+          <div class="roadmap-timeline">
+            <div class="roadmap-item">
+              <div class="roadmap-phase">Phase 1 – Foundation</div>
+              <div class="roadmap-title">Contract &amp; Core Infrastructure</div>
+              <p class="roadmap-text">
+                • Deploy and verify the DPX BEP-20 contract on BNB Smart Chain.<br />
+                • Set up initial liquidity and listing on PancakeSwap.<br />
+                • Launch website, litepaper, and core branding assets.
+              </p>
+            </div>
+
+            <div class="roadmap-item">
+              <div class="roadmap-phase">Phase 2 – Staking &amp; Community</div>
+              <div class="roadmap-title">On-Chain Staking &amp; First Users</div>
+              <p class="roadmap-text">
+                • Deploy and activate staking contracts for DPX.<br />
+                • Grow community channels across Pakistan &amp; GCC.<br />
+                • Target listings on major tracking platforms (e.g., CoinGecko, CoinMarketCap) where appropriate.
+              </p>
+            </div>
+
+            <div class="roadmap-item">
+              <div class="roadmap-phase">Phase 3 – Payments &amp; Integrations</div>
+              <div class="roadmap-title">Real-World Payment Pilots</div>
+              <p class="roadmap-text">
+                • Pilot DPX usage for merchant payments and freelance settlements.<br />
+                • Explore integrations with regional platforms and payment providers.<br />
+                • Build support tools for invoices, micro-payments, and recurring flows.
+              </p>
+            </div>
+
+            <div class="roadmap-item">
+              <div class="roadmap-phase">Phase 4 – Ecosystem Growth</div>
+              <div class="roadmap-title">Scaling the DashPayX Stack</div>
+              <p class="roadmap-text">
+                • Expand the suite of DashPayX tools and utilities.<br />
+                • Deepen integrations with DeFi and payment infrastructure.<br />
+                • Continue audits, security reviews, and governance refinements over time.
+              </p>
+            </div>
+          </div>
+
+          <div class="roadmap-card">
+            The roadmap is deliberately execution-focused. Each phase is about shipping specific pieces of infrastructure, measuring
+            their usage, and only then expanding. The intent is to build DPX like a payment protocol, not a short-lived trading
+            narrative.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECURITY -->
+    <section id="security" class="section-security">
+      <div class="container reveal">
+        <div class="section-header">
+          <div class="section-kicker">Security &amp; Transparency</div>
+          <h2 class="section-title">Security before speculation.</h2>
+          <p class="section-sub">
+            DashPayX is structured around clear, verifiable smart contracts and responsible treasury practices. Users should always
+            be able to see how the system works — without reverse-engineering surprises.
+          </p>
+        </div>
+
+        <div class="security-grid">
+          <article class="security-card">
+            <div class="security-icon"></div>
+            <h3 class="security-title">Verified Smart Contract</h3>
+            <ul class="security-list">
+              <li>Standard BEP-20 implementation on BSC.</li>
+              <li>Source code verified on BscScan.</li>
+              <li>No hidden mint or blacklist logic.</li>
+            </ul>
+            <a class="security-link" href="[DPX_BSCSCAN_LINK]" target="_blank">View on BscScan →</a>
+          </article>
+
+          <article class="security-card">
+            <div class="security-icon"></div>
+            <h3 class="security-title">Liquidity Locked</h3>
+            <ul class="security-list">
+              <li>Liquidity provider (LP) tokens locked via a third-party locker.</li>
+              <li>LP lock details shared publicly.</li>
+              <li>Designed to minimize rug risk perception.</li>
+            </ul>
+            <a class="security-link" href="[DPX_LP_LOCK_LINK]" target="_blank">View LP Lock →</a>
+          </article>
+
+          <article class="security-card">
+            <div class="security-icon"></div>
+            <h3 class="security-title">Audit &amp; Review</h3>
+            <ul class="security-list">
+              <li>Independent contract review targeted.</li>
+              <li>Audit report to be published for public review.</li>
+              <li>Continuous improvement approach, not a one-off checkbox.</li>
+            </ul>
+            <a class="security-link" href="[DPX_AUDIT_LINK]" target="_blank">View Audit →</a>
+          </article>
+
+          <article class="security-card">
+            <div class="security-icon"></div>
+            <h3 class="security-title">Treasury &amp; Governance</h3>
+            <ul class="security-list">
+              <li>Treasury managed with a risk-aware philosophy.</li>
+              <li>Multi-sig and process-driven decisions as the project matures.</li>
+              <li>Community feedback channels open from day one.</li>
+            </ul>
+            <a class="security-link" href="[DPX_DOCS_LINK]" target="_blank">View Docs →</a>
+          </article>
+        </div>
+
+        <div class="security-never">
+          <div class="security-never-title">What DashPayX will never do.</div>
+          <ul>
+            <li>No hidden mints or stealth supply changes.</li>
+            <li>No honeypot or blocked selling mechanics.</li>
+            <li>No confiscation of user-held tokens.</li>
+            <li>No “guaranteed returns” or unrealistic APY claims.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW TO BUY -->
+    <section id="buy" class="section-buy">
+      <div class="container reveal">
+        <div class="section-header">
+          <div class="section-kicker">How to Buy</div>
+          <h2 class="section-title">How to buy DashPayX (DPX) on BSC.</h2>
+          <p class="section-sub">
+            Buying DPX follows the same flow as most BEP-20 tokens on BNB Smart Chain. Always verify that you are using the
+            official contract address and official links.
+          </p>
+        </div>
+
+        <div class="buy-grid">
+          <article class="buy-card">
+            <div class="buy-step">Step 1</div>
+            <div class="buy-title">Install a Web3 wallet</div>
+            <p>
+              Install a wallet like MetaMask or Trust Wallet. Keep your seed phrase offline and never share it with anyone —
+              not even the team.
+            </p>
+          </article>
+
+          <article class="buy-card">
+            <div class="buy-step">Step 2</div>
+            <div class="buy-title">Add BNB Smart Chain</div>
+            <p>
+              Configure BNB Smart Chain (BSC) in your wallet using the official RPC and chain ID (<code>56</code> for mainnet). Many
+              wallets now include BSC by default, but always double-check settings.
+            </p>
+          </article>
+
+          <article class="buy-card">
+            <div class="buy-step">Step 3</div>
+            <div class="buy-title">Fund with BNB</div>
+            <p>
+              Transfer BNB to your wallet for both the token purchase and gas fees. Use exchanges or bridges that you trust.
+            </p>
+          </article>
+
+          <article class="buy-card">
+            <div class="buy-step">Step 4</div>
+            <div class="buy-title">Swap BNB → DPX</div>
+            <p>
+              Go to PancakeSwap, connect your wallet, and paste the official DPX contract address. Double-check that the token
+              you see matches the official contract before swapping.
+            </p>
+          </article>
+        </div>
+
+        <p class="buy-note">
+          <strong>Important:</strong> Always verify the DPX contract address from the official website or announcement channels
+          before buying. Never rely on random search results or unsolicited messages.
+        </p>
+        <p class="buy-note">
+          Never share your seed phrase or private keys. The DashPayX team will <strong>never</strong> DM you first or ask for
+          your seed phrase.
+        </p>
+      </div>
+    </section>
+
+    <!-- TEAM / GOVERNANCE -->
+    <section id="team" class="section-team">
+      <div class="container reveal">
+        <div class="section-header">
+          <div class="section-kicker">Team &amp; Governance</div>
+          <h2 class="section-title">People and process over personalities.</h2>
+          <p class="section-sub">
+            DashPayX is built by contributors with experience in operations, HR, and regional markets. Over time, transparency
+            increases alongside ecosystem maturity — anchored by clear processes, not personalities.
+          </p>
+        </div>
+
+        <div class="team-grid">
+          <article class="team-card">
+            <div class="team-avatar"></div>
+            <div class="team-name">Protocol Lead</div>
+            <div class="team-role">Architecture &amp; Smart Contracts</div>
+            <p class="team-text">
+              Oversees core protocol design, contract deployment, and on-chain parameters — with a focus on simplicity and auditability.
+            </p>
+          </article>
+
+          <article class="team-card">
+            <div class="team-avatar"></div>
+            <div class="team-name">Product &amp; Ecosystem Lead</div>
+            <div class="team-role">Utility &amp; Partnerships</div>
+            <p class="team-text">
+              Drives the payment and staking roadmap, aligning DPX with real use-cases, merchant pilots, and ecosystem integrations in Pakistan &amp; GCC.
+            </p>
+          </article>
+
+          <article class="team-card">
+            <div class="team-avatar"></div>
+            <div class="team-name">Community &amp; Governance Lead</div>
+            <div class="team-role">Community, Comms &amp; Feedback</div>
+            <p class="team-text">
+              Coordinates communication, manages official channels, and builds feedback loops that inform how DPX evolves over time.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section-faq">
+      <div class="container reveal">
+        <div class="section-header">
+          <div class="section-kicker">FAQ</div>
+          <h2 class="section-title">Questions, answered simply.</h2>
+          <p class="section-sub">
+            Nothing on this website is financial advice. These answers are meant to clarify how DashPayX is structured — not to
+            predict price or returns.
+          </p>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-list">
+            <article class="faq-item">
+              <div class="faq-header">
+                <div class="faq-question">What is DashPayX (DPX)?</div>
+                <div class="faq-toggle">+</div>
+              </div>
+              <div class="faq-body">
+                <div class="faq-body-inner">
+                  DPX is a BEP-20 token on BNB Smart Chain with a fixed supply of 1,000,000,000 tokens. It is built around two
+                  core utilities: staking and everyday payments, with a specific focus on users and businesses in Pakistan &amp; the GCC.
+                </div>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <div class="faq-header">
+                <div class="faq-question">Is DPX a meme coin?</div>
+                <div class="faq-toggle">+</div>
+              </div>
+              <div class="faq-body">
+                <div class="faq-body-inner">
+                  No. DashPayX is a utility-focused token. There is no meme narrative, no inflationary reward loop, and no built-in
+                  gambling mechanics. The intent is to function as a simple staking and payment asset.
+                </div>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <div class="faq-header">
+                <div class="faq-question">Is there any buy or sell tax?</div>
+                <div class="faq-toggle">+</div>
+              </div>
+              <div class="faq-body">
+                <div class="faq-body-inner">
+                  No. DPX transfers have 0% buy tax and 0% sell tax. There are no reflections or embedded fee routes inside the
+                  token contract.
+                </div>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <div class="faq-header">
+                <div class="faq-question">How is the liquidity protected?</div>
+                <div class="faq-toggle">+</div>
+              </div>
+              <div class="faq-body">
+                <div class="faq-body-inner">
+                  Liquidity is planned to be locked via a recognized LP locker. The lock details (duration, amount, and links)
+                  will be shared publicly so that holders can verify them on-chain.
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="faq-list">
+            <article class="faq-item">
+              <div class="faq-header">
+                <div class="faq-question">Is DashPayX audited?</div>
+                <div class="faq-toggle">+</div>
+              </div>
+              <div class="faq-body">
+                <div class="faq-body-inner">
+                  A formal code review and/or audit is part of the roadmap. Even after an initial audit, the project aims to treat
+                  security as an ongoing process — not a single event.
+                </div>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <div class="faq-header">
+                <div class="faq-question">What are the main risks?</div>
+                <div class="faq-toggle">+</div>
+              </div>
+              <div class="faq-body">
+                <div class="faq-body-inner">
+                  Crypto assets are highly volatile, and smart contracts can contain bugs. There is no guarantee that DPX will
+                  retain value or that adoption targets will be met. Never invest money you cannot afford to lose.
+                </div>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <div class="faq-header">
+                <div class="faq-question">How do I stay updated?</div>
+                <div class="faq-toggle">+</div>
+              </div>
+              <div class="faq-body">
+                <div class="faq-body-inner">
+                  Follow the official X (Twitter) account, join the Telegram announcement channel, and keep an eye on updates
+                  published on this website. Avoid relying on unofficial groups or unsolicited DMs.
+                </div>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <div class="faq-header">
+                <div class="faq-question">Is any of this financial advice?</div>
+                <div class="faq-toggle">+</div>
+              </div>
+              <div class="faq-body">
+                <div class="faq-body-inner">
+                  No. Nothing here is financial, legal, or tax advice. DashPayX is an experimental cryptoasset and carries all of
+                  the risks associated with this space.
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMUNITY -->
+    <section id="community" class="section-community">
+      <div class="container reveal">
+        <div class="section-header">
+          <div class="section-kicker">Community</div>
+          <h2 class="section-title">Join the DashPayX community.</h2>
+          <p class="section-sub">
+            The community is where feedback, ideas, and real-world usage emerge. All key updates will be shared through official
+            channels and this website.
+          </p>
+        </div>
+
+        <div class="community-layout">
+          <div>
+            <p style="font-size:13px; color:var(--text-muted); margin-bottom:14px;">
+              Whether you are a user, builder, or partner exploring payments and staking in Pakistan or the GCC, the DashPayX
+              community is the best place to follow progress and participate in discussions.
+            </p>
+
+            <div class="community-buttons">
+              <button class="btn-social twitter" onclick="openLink('[DPX_X_LINK]')">
+                <span>𝕏</span>
+                <span>X (Twitter)</span>
+              </button>
+              <button class="btn-social telegram" onclick="openLink('[DPX_TELEGRAM_LINK]')">
+                <span>✈</span>
+                <span>Telegram</span>
+              </button>
+              <button class="btn-social discord" onclick="openLink('[DPX_DISCORD_LINK]')">
+                <span>◎</span>
+                <span>Discord</span>
+              </button>
+            </div>
+
+            <p style="font-size:12px; color:var(--text-soft);">
+              Be careful with impersonation attempts. The team will never ask for your seed phrase or private keys, and will not
+              approach you with investment guarantees.
+            </p>
+          </div>
+
+          <div>
+            <div class="newsletter-card">
+              <h3 style="font-size:14px; font-weight:600; margin-bottom:4px;">Email notifications (optional)</h3>
+              <p style="font-size:12px; color:var(--text-muted);">
+                Enter your email if you’d like to be notified when major milestones go live. This is a simple front-end form — no
+                wallet connection required.
+              </p>
+              <div class="newsletter-input-row">
+                <input
+                  type="email"
+                  id="newsletterEmail"
+                  class="newsletter-input"
+                  placeholder="you@example.com"
+                  autocomplete="email"
+                />
+                <button class="newsletter-btn" id="newsletterBtn">Notify Me</button>
+              </div>
+              <div class="newsletter-status" id="newsletterStatus">
+                Thanks — you’re on the notification list (locally).
+              </div>
+              <p style="font-size:11px; color:var(--text-soft); margin-top:6px;">
+                This form does not send data to a backend yet. It is a placeholder for future email integrations.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <div class="logo-sphere"></div>
+            <div>
+              <strong>DashPayX (DPX)</strong>
+              <div style="font-size:11px; color:var(--text-muted);">
+                No-tax, fixed-supply BEP-20 for staking &amp; payments on BNB Smart Chain.
+              </div>
+            </div>
+          </div>
+          <p class="footer-mission">
+            DashPayX aims to provide clean staking and payment rails for users and businesses across Pakistan &amp; the GCC —
+            with transparent tokenomics and a protocol-first mindset.
+          </p>
+          <p class="footer-disclaimer">
+            Nothing on this website is financial, legal, or tax advice. Crypto assets are highly volatile and you can lose all
+            of your capital. Always do your own research.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-links">
+            <a href="[DPX_WHITEPAPER_LINK]" target="_blank">Whitepaper</a>
+            <a href="[DPX_AUDIT_LINK]" target="_blank">Audit</a>
+            <a href="[DPX_LP_LOCK_LINK]" target="_blank">LP Lock</a>
+            <a href="[DPX_GITHUB_LINK]" target="_blank">GitHub</a>
+            <a href="[DPX_DOCS_LINK]" target="_blank">Docs</a>
+            <a href="#home">Terms</a>
+            <a href="#home">Privacy</a>
+            <a href="mailto:support@dashpayx.net">support@dashpayx.net</a>
+          </div>
+          <p class="footer-disclaimer" id="footerYear"></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCROLL TOP BUTTON -->
+  <button class="scroll-top" id="scrollTopBtn" aria-label="Scroll to top">
+    <span>↑</span>
+  </button>
+</div>
+
+<script>
+  // ===== Helper: Smooth section scroll =====
+  function scrollToSection(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function openLink(url) {
+    if (!url || url.startsWith('[')) return; // placeholder not set
+    window.open(url, '_blank', 'noopener');
+  }
+
+  // ===== Mobile nav toggle =====
+  const navToggle = document.getElementById('navToggle');
+  const navMobile = document.getElementById('navMobile');
+
+  if (navToggle && navMobile) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = navMobile.style.display === 'flex';
+      navMobile.style.display = isOpen ? 'none' : 'flex';
+    });
+
+    navMobile.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A' || e.target.closest('button')) {
+        navMobile.style.display = 'none';
+      }
+    });
+  }
+
+  // ===== Copy contract address =====
+  const contractAddressText = document.getElementById('contractAddressText');
+  const copyBtn = document.getElementById('copyContractBtn');
+  const copyStatus = document.getElementById('copyStatus');
+
+  if (copyBtn && contractAddressText && copyStatus) {
+    copyBtn.addEventListener('click', async () => {
+      const text = contractAddressText.textContent.trim();
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          const temp = document.createElement('textarea');
+          temp.value = text;
+          document.body.appendChild(temp);
+          temp.select();
+          document.execCommand('copy');
+          document.body.removeChild(temp);
+        }
+        copyStatus.classList.add('visible');
+        setTimeout(() => copyStatus.classList.remove('visible'), 1600);
+      } catch (err) {
+        console.error('Copy failed', err);
+      }
+    });
+  }
+
+  // ===== Scroll reveal animations =====
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && revealEls.length) {
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.15
+      }
+    );
+
+    revealEls.forEach(el => observer.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('visible'));
+  }
+
+  // ===== Scroll to top button =====
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll', () => {
+    const show = window.scrollY > 280;
+    if (scrollTopBtn) {
+      scrollTopBtn.classList.toggle('visible', show);
+    }
+  });
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // ===== Newsletter (front-end only) =====
+  const newsletterEmail = document.getElementById('newsletterEmail');
+  const newsletterBtn = document.getElementById('newsletterBtn');
+  const newsletterStatus = document.getElementById('newsletterStatus');
+
+  if (newsletterEmail && newsletterBtn && newsletterStatus) {
+    newsletterBtn.addEventListener('click', () => {
+      const email = (newsletterEmail.value || '').trim();
+      const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      if (!valid) {
+        newsletterStatus.textContent = 'Please enter a valid email address.';
+        newsletterStatus.style.color = '#F97316';
+        newsletterStatus.classList.add('visible');
+        return;
+      }
+      try {
+        localStorage.setItem('dashpayx_newsletter_email', email);
+      } catch (e) {
+        console.warn('LocalStorage not available', e);
+      }
+      newsletterStatus.textContent = 'Thanks — you’re on the notification list (locally).';
+      newsletterStatus.style.color = '#22C55E';
+      newsletterStatus.classList.add('visible');
+      setTimeout(() => {
+        newsletterStatus.classList.remove('visible');
+      }, 2600);
+    });
+  }
+
+  // ===== FAQ accordion =====
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const header = item.querySelector('.faq-header');
+    const toggle = item.querySelector('.faq-toggle');
+    const body = item.querySelector('.faq-body');
+    if (!header || !toggle || !body) return;
+
+    header.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      faqItems.forEach(i => {
+        i.classList.remove('open');
+        const t = i.querySelector('.faq-toggle');
+        const b = i.querySelector('.faq-body');
+        if (t) t.textContent = '+';
+        if (b) b.style.maxHeight = '0px';
+      });
+
+      if (!isOpen) {
+        item.classList.add('open');
+        toggle.textContent = '−';
+        body.style.maxHeight = body.scrollHeight + 'px';
+      } else {
+        item.classList.remove('open');
+        toggle.textContent = '+';
+        body.style.maxHeight = '0px';
+      }
+    });
+  });
+
+  // ===== Dynamic footer year =====
+  const footerYear = document.getElementById('footerYear');
+  if (footerYear) {
+    const year = new Date().getFullYear();
+    footerYear.textContent = `© ${year} DashPayX. All rights reserved.`;
+  }
+</script>
+</body>
+</html>
