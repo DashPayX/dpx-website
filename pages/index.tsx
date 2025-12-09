@@ -1,6 +1,4 @@
 // pages/index.tsx
-import type { NextPage } from 'next';
-
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import About from '../components/About';
@@ -11,7 +9,7 @@ import FAQ from '../components/FAQ';
 import Community from '../components/Community';
 import Footer from '../components/Footer';
 
-const Home: NextPage = () => {
+const Home = () => {
   return (
     <>
       <Navbar />
@@ -29,9 +27,9 @@ const Home: NextPage = () => {
 
 export default Home;
 
-// This forces Next.js to render the page at request time (no static pre-render)
+// force server-side rendering (we already used this for successful build)
 export async function getServerSideProps() {
   return {
-    props: {}, // no props for now
+    props: {},
   };
 }
