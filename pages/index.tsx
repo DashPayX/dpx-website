@@ -28,3 +28,10 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+// This forces Next.js to render the page at request time (no static pre-render)
+export async function getServerSideProps() {
+  return {
+    props: {}, // no props for now
+  };
+}
