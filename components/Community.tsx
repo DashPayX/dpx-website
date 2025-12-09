@@ -5,7 +5,7 @@ const Community = () => {
     <section
       id="community"
       style={{
-        padding: "60px 16px",
+        padding: "60px 16px 40px",
         maxWidth: "960px",
         margin: "0 auto",
         textAlign: "center",
@@ -23,27 +23,29 @@ const Community = () => {
       <p
         style={{
           fontSize: "14px",
-          opacity: 0.85,
-          marginBottom: "32px",
+          opacity: 0.9,
+          marginBottom: "24px",
         }}
       >
-        DashPayX will grow community-first. Join our official channels to follow development
-        updates, exchange listings, staking updates, roadmap execution and real-world payment adoption.
+        DashPayX will grow community-first. Join our official channels to follow
+        development updates, exchange listings, staking updates, roadmap
+        execution and real-world payment adoption.
       </p>
 
-      {/* Buttons Row */}
+      {/* Buttons row */}
       <div
         style={{
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "center",
-          gap: "16px",
-          marginBottom: "40px",
+          gap: "12px",
+          marginBottom: "28px",
         }}
       >
         <a
           href="https://t.me/DashPayX_Community"
           target="_blank"
+          rel="noreferrer"
           style={{
             padding: "10px 18px",
             borderRadius: "999px",
@@ -57,6 +59,7 @@ const Community = () => {
         <a
           href="https://t.me/DashPayX_DPX"
           target="_blank"
+          rel="noreferrer"
           style={{
             padding: "10px 18px",
             borderRadius: "999px",
@@ -70,6 +73,7 @@ const Community = () => {
         <a
           href="https://x.com/DashX47145"
           target="_blank"
+          rel="noreferrer"
           style={{
             padding: "10px 18px",
             borderRadius: "999px",
@@ -81,51 +85,42 @@ const Community = () => {
         </a>
       </div>
 
-      {/* QR Codes Grid */}
+      {/* QR row using ONLINE QR generator (no local files needed) */}
       <div
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-          gap: "24px",
-          justifyItems: "center",
-          marginBottom: "20px",
+          gap: "18px",
+          alignItems: "flex-start",
+          marginBottom: "24px",
         }}
       >
-        {/* Telegram Community QR */}
-        <div style={{ textAlign: "center" }}>
+        <div>
           <img
-            src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://t.me/DashPayX_Community"
+            src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Ft.me%2FDashPayX_Community"
             alt="Telegram Community QR"
-            style={{ width: "160px", borderRadius: "8px" }}
-            referrerPolicy="no-referrer"
           />
-          <p style={{ fontSize: "12px", marginTop: "8px", opacity: 0.7 }}>
+          <p style={{ fontSize: "12px", opacity: 0.75, marginTop: "6px" }}>
             Telegram Community
           </p>
         </div>
 
-        {/* Telegram Announcement QR */}
-        <div style={{ textAlign: "center" }}>
+        <div>
           <img
-            src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://t.me/DashPayX_DPX"
+            src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Ft.me%2FDashPayX_DPX"
             alt="Telegram Announcements QR"
-            style={{ width: "160px", borderRadius: "8px" }}
-            referrerPolicy="no-referrer"
           />
-          <p style={{ fontSize: "12px", marginTop: "8px", opacity: 0.7 }}>
+          <p style={{ fontSize: "12px", opacity: 0.75, marginTop: "6px" }}>
             Announcements Channel
           </p>
         </div>
 
-        {/* X Twitter QR */}
-        <div style={{ textAlign: "center" }}>
+        <div>
           <img
-            src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://x.com/DashX47145"
-            alt="X Twitter QR"
-            style={{ width: "160px", borderRadius: "8px" }}
-            referrerPolicy="no-referrer"
+            src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Fx.com%2FDashX47145"
+            alt="X / Twitter QR"
           />
-          <p style={{ fontSize: "12px", marginTop: "8px", opacity: 0.7 }}>
+          <p style={{ fontSize: "12px", opacity: 0.75, marginTop: "6px" }}>
             X / Twitter
           </p>
         </div>
@@ -135,13 +130,10 @@ const Community = () => {
         style={{
           fontSize: "12px",
           opacity: 0.75,
-          marginTop: "12px",
         }}
       >
         For partnership or business inquiries, please email:{" "}
-        <a href="mailto:hello@dashpayx.net" style={{ textDecoration: "underline" }}>
-          hello@dashpayx.net
-        </a>
+        <a href="mailto:hello@dashpayx.net">hello@dashpayx.net</a>
       </p>
     </section>
   );
